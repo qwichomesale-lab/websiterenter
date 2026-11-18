@@ -1,692 +1,397 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Auto Parts Finder Widget</title>
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Inter Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <style>
-    :root {
-      /* Default fallback accent color (overridden dynamically by shop config or ?color= URL param) */
-      --accent-color: #d32f2f;
-      --accent-contrast: #ffffff;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: transparent;
-      margin: 0;
-      padding: 0;
-    }
-
-    /* Dynamic Brand Accent Utilities */
-    .bg-accent {
-      background-color: var(--accent-color) !important;
-      color: var(--accent-contrast) !important;
-    }
-    .text-accent {
-      color: var(--accent-color) !important;
-    }
-    .border-accent {
-      border-color: var(--accent-color) !important;
-    }
-    .input-field:focus {
-      outline: none;
-      border-color: var(--accent-color) !important;
-      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-color) 22%, transparent);
-    }
-
-    /* Smooth fade transitions */
-    .fade-in {
-      animation: fadeIn 0.25s ease-out forwards;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(4px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebsiteRenter.com | High-Converting Websites & Auto Parts Lead Forms</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
 </head>
-<body class="antialiased text-slate-900 p-2 sm:p-4">
+<body class="bg-slate-950 text-slate-100 antialiased selection:bg-amber-500 selection:text-slate-950">
 
-  <!-- MAIN WIDGET CONTAINER (Optimized for seamless iFrame embedding) -->
-  <div id="widgetContainer" class="max-w-2xl mx-auto bg-white border border-slate-200 rounded-2xl shadow-xl overflow-hidden">
-
-    <!-- ===================================================================== -->
-    <!-- KILL-SWITCH / SUSPENDED VIEW (Shown when status === 'suspended')      -->
-    <!-- ===================================================================== -->
-    <div id="suspendedView" class="hidden p-8 sm:p-12 text-center bg-slate-950 text-white">
-      <div class="w-16 h-16 rounded-2xl bg-amber-500/15 border border-amber-500/40 text-amber-400 flex items-center justify-center mx-auto mb-5 text-2xl">
-        <i class="fa-solid fa-triangle-exclamation"></i>
-      </div>
-      <h2 class="text-2xl font-black tracking-tight mb-2">Parts Request Portal Temporarily Unavailable</h2>
-      <p class="text-sm text-slate-400 max-w-md mx-auto leading-relaxed mb-6">
-        Online parts intake for this location is currently paused due to scheduled maintenance or account billing verification. Please call the shop directly for immediate assistance.
-      </p>
-      <div class="inline-block bg-slate-900 border border-slate-800 rounded-lg px-4 py-2 text-xs text-slate-500 font-mono">
-        Widget Infrastructure Managed by WebsiteRenter.com
-      </div>
-    </div>
-
-    <!-- ===================================================================== -->
-    <!-- ACTIVE WIDGET VIEW                                                    -->
-    <!-- ===================================================================== -->
-    <div id="activeView">
-      
-      <!-- Top Brand Header -->
-      <div class="bg-slate-950 text-white px-6 py-5 border-b border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-        <div class="flex items-center space-x-3">
-          <div class="w-10 h-10 rounded-xl bg-accent flex items-center justify-center font-black text-lg shadow-md shrink-0">
-            <i class="fa-solid fa-gears"></i>
-          </div>
-          <div>
-            <h1 id="headerTitle" class="text-lg sm:text-xl font-black tracking-tight leading-tight">Auto Parts Finder</h1>
-            <p id="headerSubtitle" class="text-xs text-slate-400">Fast OEM & Aftermarket Parts Lookup — Direct Shop Quote</p>
-          </div>
-        </div>
-        <div class="self-start sm:self-center">
-          <span class="inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-slate-900 border border-slate-700 text-slate-200">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 mr-1.5 animate-pulse"></span> Live Parts Desk
-          </span>
-        </div>
-      </div>
-
-      <!-- 3-Step Visual Progress Indicator -->
-      <div class="bg-slate-50 border-b border-slate-200 px-6 py-3.5">
-        <div class="flex items-center justify-between text-xs font-bold">
-          <div id="stepBadge1" class="flex items-center space-x-2 text-slate-900">
-            <span class="w-6 h-6 rounded-full bg-accent flex items-center justify-center text-[11px] font-extrabold">1</span>
-            <span>Vehicle & VIN</span>
-          </div>
-          <div class="h-0.5 flex-1 bg-slate-200 mx-3">
-            <div id="progressBar1" class="h-full bg-accent transition-all duration-300 w-0"></div>
-          </div>
-          <div id="stepBadge2" class="flex items-center space-x-2 text-slate-400">
-            <span id="stepCircle2" class="w-6 h-6 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-[11px] font-extrabold">2</span>
-            <span>Part Details</span>
-          </div>
-          <div class="h-0.5 flex-1 bg-slate-200 mx-3">
-            <div id="progressBar2" class="h-full bg-accent transition-all duration-300 w-0"></div>
-          </div>
-          <div id="stepBadge3" class="flex items-center space-x-2 text-slate-400">
-            <span id="stepCircle3" class="w-6 h-6 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-[11px] font-extrabold">3</span>
-            <span>Quote Contact</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Validation Error Banner (Hidden by default, replaces alert()) -->
-      <div id="errorBanner" class="hidden mx-6 mt-5 p-3.5 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs font-semibold flex items-center justify-between fade-in">
-        <div class="flex items-center space-x-2">
-          <i class="fa-solid fa-circle-exclamation text-red-600 text-sm"></i>
-          <span id="errorText">Please complete all required fields before continuing.</span>
-        </div>
-        <button type="button" onclick="hideError()" class="text-red-500 hover:text-red-800 ml-3">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
-      </div>
-
-      <!-- MULTI-STEP FORM -->
-      <form id="partsFinderForm" novalidate class="p-6 sm:p-8">
-
-        <!-- =============================================================== -->
-        <!-- STEP 1: VEHICLE DETAILS & 17-DIGIT VIN                          -->
-        <!-- =============================================================== -->
-        <div id="step1" class="space-y-5 fade-in">
-          <div>
-            <h2 class="text-base font-extrabold text-slate-900">Step 1: Enter Vehicle Specifications</h2>
-            <p class="text-xs text-slate-500 mt-0.5">Provide your vehicle details so our parts counter matches the exact fitment.</p>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <!-- TOP NAVIGATION -->
+    <header class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="bg-gradient-to-tr from-amber-500 to-amber-300 text-slate-950 font-black px-3 py-2 rounded-lg text-xl tracking-tight shadow-lg shadow-amber-500/20">WR</div>
+                <div>
+                    <span class="text-xl font-bold tracking-tight text-white">Website<span class="text-amber-400">Renter</span></span>
+                    <span class="block text-xs text-slate-400 font-medium tracking-widest uppercase">Auto Parts Lead Systems</span>
+                </div>
+            </div>
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
+                <a href="#benefits" class="hover:text-amber-400 transition-colors">Why WebsiteRenter</a>
+                <a href="#widget" class="hover:text-amber-400 transition-colors">Live Parts Form</a>
+                <a href="#pricing" class="hover:text-amber-400 transition-colors">Pricing</a>
+            </nav>
             <div>
-              <label for="vehYear" class="block text-xs font-bold text-slate-700 mb-1">Vehicle Year <span class="text-red-600">*</span></label>
-              <input type="number" id="vehYear" min="1940" max="2028" required placeholder="e.g. 2019"
-                class="input-field w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 font-medium transition-all" />
+                <a href="#widget" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-semibold px-5 py-2.5 rounded-xl text-sm transition-all shadow-lg shadow-amber-500/20">Test Live Form</a>
             </div>
-
-            <div>
-              <label for="vehMake" class="block text-xs font-bold text-slate-700 mb-1">Make <span class="text-red-600">*</span></label>
-              <input type="text" id="vehMake" required placeholder="e.g. Ford, Chevrolet, Honda"
-                class="input-field w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 font-medium transition-all" />
-            </div>
-
-            <div>
-              <label for="vehModel" class="block text-xs font-bold text-slate-700 mb-1">Model <span class="text-red-600">*</span></label>
-              <input type="text" id="vehModel" required placeholder="e.g. F-150, Silverado, Civic"
-                class="input-field w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 font-medium transition-all" />
-            </div>
-
-            <div>
-              <label for="vehTrim" class="block text-xs font-bold text-slate-700 mb-1">Engine Size / Trim <span class="text-slate-400 font-normal">(Optional)</span></label>
-              <input type="text" id="vehTrim" placeholder="e.g. 5.0L V8, EX-L, AWD"
-                class="input-field w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 font-medium transition-all" />
-            </div>
-
-            <div class="sm:col-span-2">
-              <div class="flex items-center justify-between mb-1">
-                <label for="vehVin" class="block text-xs font-bold text-slate-700">
-                  17-Digit VIN <span class="text-accent font-semibold">(Highly Recommended for 100% Fitment Accuracy)</span>
-                </label>
-                <span id="vinCounter" class="text-[11px] font-mono font-bold text-slate-400">0 / 17</span>
-              </div>
-              <input type="text" id="vehVin" maxlength="17" placeholder="Enter 17-character VIN (found on dashboard or driver door jamb)"
-                oninput="updateVinCounter(this)"
-                class="input-field w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 font-mono uppercase tracking-wider transition-all" />
-            </div>
-          </div>
-
-          <div class="pt-2 flex justify-end">
-            <button type="button" onclick="goToStep(2)"
-              class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-accent font-extrabold text-sm shadow-lg hover:opacity-95 transition-all flex items-center justify-center">
-              Next: Part Details <i class="fa-solid fa-arrow-right ml-2"></i>
-            </button>
-          </div>
         </div>
+    </header>
 
-        <!-- =============================================================== -->
-        <!-- STEP 2: PART REQUESTED DETAILS                                  -->
-        <!-- =============================================================== -->
-        <div id="step2" class="hidden space-y-5 fade-in">
-          <div>
-            <h2 class="text-base font-extrabold text-slate-900">Step 2: What Part Do You Need?</h2>
-            <p class="text-xs text-slate-500 mt-0.5">Select the system category and describe the replacement part you're looking for.</p>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label for="partCategory" class="block text-xs font-bold text-slate-700 mb-1">Part Category <span class="text-red-600">*</span></label>
-              <select id="partCategory" required
-                class="input-field w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 font-medium transition-all">
-                <option value="" disabled selected>Choose a category...</option>
-                <option value="Engine & Drivetrain">Engine & Drivetrain</option>
-                <option value="Brakes & Suspension">Brakes & Suspension</option>
-                <option value="Electrical & Lighting">Electrical & Lighting</option>
-                <option value="Transmission">Transmission</option>
-                <option value="Exhaust & Cooling">Exhaust & Cooling</option>
-                <option value="Body & Exterior">Body & Exterior</option>
-                <option value="Other">Other / Not Sure</option>
-              </select>
+    <!-- HERO SECTION -->
+    <section class="relative overflow-hidden py-20 lg:py-24 border-b border-slate-900">
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(245,158,11,0.15),rgba(255,255,255,0))]"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <div class="inline-flex items-center space-x-2 bg-amber-500/10 border border-amber-500/20 px-4 py-1.5 rounded-full text-amber-400 text-xs font-semibold uppercase tracking-wider mb-6">
+                <span>Built for Auto Parts Shops, Salvage Yards & Repair Centers</span>
             </div>
-
-            <div>
-              <label for="partCondition" class="block text-xs font-bold text-slate-700 mb-1">Condition Preference <span class="text-red-600">*</span></label>
-              <select id="partCondition" required
-                class="input-field w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 font-medium transition-all">
-                <option value="Any Available (Fastest Quote)" selected>Any Available (Fastest Quote)</option>
-                <option value="New OEM">New OEM</option>
-                <option value="Aftermarket">Aftermarket</option>
-                <option value="Used / Recycled">Used / Recycled</option>
-              </select>
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white max-w-4xl mx-auto leading-tight">
+                Turn Website Visitors Into <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-200">Ready-to-Buy Parts Orders.</span>
+            </h1>
+            <p class="mt-6 text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
+                Capture exact Year, Make, Model, VIN, and part photos automatically—sent straight to your inbox and phone in seconds so you close more quotes before buyers call the shop down the street.
+            </p>
+            <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#widget" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-8 py-4 rounded-xl text-base transition-all shadow-xl shadow-amber-500/20">
+                    Try the Auto Parts Finder Below
+                </a>
+                <a href="#pricing" class="bg-slate-900 hover:bg-slate-800 text-slate-200 font-semibold px-8 py-4 rounded-xl text-base border border-slate-800 transition-all">
+                    See Simple Pricing
+                </a>
             </div>
-
-            <div class="sm:col-span-2">
-              <label for="partNumber" class="block text-xs font-bold text-slate-700 mb-1">OEM or Brand Part Number <span class="text-slate-400 font-normal">(Optional — if known)</span></label>
-              <input type="text" id="partNumber" placeholder="e.g. ACDelco 41-110 or Motorcraft FL-500S"
-                class="input-field w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 font-mono transition-all" />
-            </div>
-
-            <div class="sm:col-span-2">
-              <label for="partDescription" class="block text-xs font-bold text-slate-700 mb-1">Part Name / Detailed Description <span class="text-red-600">*</span></label>
-              <textarea id="partDescription" rows="3" required placeholder="e.g. Front driver-side wheel bearing hub assembly, or alternator for 3.5L engine..."
-                class="input-field w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 font-medium transition-all"></textarea>
-            </div>
-          </div>
-
-          <div class="pt-2 flex flex-col-reverse sm:flex-row items-center justify-between gap-3">
-            <button type="button" onclick="goToStep(1)"
-              class="w-full sm:w-auto px-5 py-3 rounded-xl border border-slate-300 text-slate-700 hover:bg-slate-100 font-bold text-sm transition-all">
-              <i class="fa-solid fa-arrow-left mr-1.5"></i> Back
-            </button>
-            <button type="button" onclick="goToStep(3)"
-              class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-accent font-extrabold text-sm shadow-lg hover:opacity-95 transition-all flex items-center justify-center">
-              Next: Contact & Fulfillment <i class="fa-solid fa-arrow-right ml-2"></i>
-            </button>
-          </div>
         </div>
+    </section>
 
-        <!-- =============================================================== -->
-        <!-- STEP 3: CONTACT & FULFILLMENT PREFERENCE                        -->
-        <!-- =============================================================== -->
-        <div id="step3" class="hidden space-y-5 fade-in">
-          <div>
-            <h2 class="text-base font-extrabold text-slate-900">Step 3: Where Should We Send Your Quote?</h2>
-            <p class="text-xs text-slate-500 mt-0.5">Our team will check availability and send pricing directly to your phone or email.</p>
-          </div>
+    <!-- VALUE PROPOSITIONS -->
+    <section id="benefits" class="py-16 border-b border-slate-900 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6">
+                    <div class="text-amber-400 font-bold text-lg mb-2">1. Zero Back-and-Forth Guessing</div>
+                    <p class="text-sm text-slate-400 leading-relaxed">Buyers submit their Year, Make, Model, 17-digit VIN, and a photo of the damaged part upfront—saving your counter team 10 minutes per call.</p>
+                </div>
+                <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6">
+                    <div class="text-amber-400 font-bold text-lg mb-2">2. Instant Email & Text Alerts</div>
+                    <p class="text-sm text-slate-400 leading-relaxed">Every quote request routes immediately to your email and mobile device with the part photo front and center so you can call back fast.</p>
+                </div>
+                <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6">
+                    <div class="text-amber-400 font-bold text-lg mb-2">3. Plug-and-Play Deployment</div>
+                    <p class="text-sm text-slate-400 leading-relaxed">Embed the Auto Parts Finder directly onto your existing site, or launch a complete high-converting shop website ready to capture local traffic.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div class="sm:col-span-2">
-              <label for="custName" class="block text-xs font-bold text-slate-700 mb-1">Full Name <span class="text-red-600">*</span></label>
-              <input type="text" id="custName" required placeholder="Enter your full name"
-                class="input-field w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 font-medium transition-all" />
+    <!-- THE AUTO PARTS FINDER EMBEDDED WIDGET -->
+    <section id="widget" class="py-20 bg-slate-900/50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold tracking-tight text-white">Live Auto Parts Finder Widget</h2>
+                <p class="mt-2 text-slate-400">Test the exact multi-step intake form your customers use to request quotes and counter pickups.</p>
             </div>
 
-            <div>
-              <label for="custPhone" class="block text-xs font-bold text-slate-700 mb-1">Mobile Phone (For SMS Quote) <span class="text-red-600">*</span></label>
-              <input type="tel" id="custPhone" required placeholder="(555) 000-0000"
-                class="input-field w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 font-medium transition-all" />
+            <!-- WIDGET CONTAINER -->
+            <div class="bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl p-6 sm:p-10">
+                <div id="form-container">
+                    <!-- Progress Bar -->
+                    <div class="mb-8">
+                        <div class="flex justify-between text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
+                            <span id="step-label-1" class="text-amber-400">1. Vehicle Info</span>
+                            <span id="step-label-2">2. Part Specs & Photo</span>
+                            <span id="step-label-3">3. Contact & Fulfillment</span>
+                        </div>
+                        <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                            <div id="progress-bar" class="bg-amber-500 h-full w-1/3 transition-all duration-300"></div>
+                        </div>
+                    </div>
+
+                    <form id="partsForm" enctype="multipart/form-data" class="space-y-6">
+                        <!-- STEP 1: VEHICLE INFORMATION -->
+                        <div id="step-1" class="space-y-5">
+                            <h3 class="text-xl font-semibold text-white flex items-center space-x-2">
+                                <span class="bg-amber-500 text-slate-950 w-7 h-7 rounded-full inline-flex items-center justify-center text-sm font-bold">1</span>
+                                <span>Vehicle Identification</span>
+                            </h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                <div>
+                                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Year *</label>
+                                    <input type="text" id="vehYear" name="year" required placeholder="e.g. 2020" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition-colors">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Make *</label>
+                                    <input type="text" id="vehMake" name="make" required placeholder="e.g. Ford" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition-colors">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Model *</label>
+                                    <input type="text" id="vehModel" name="model" required placeholder="e.g. F-150" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition-colors">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">VIN (Optional - 17 Chars)</label>
+                                <input type="text" id="vehVin" name="vin" maxlength="17" placeholder="e.g. 1FTEW1E59LFA00001" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white font-mono uppercase tracking-widest text-sm focus:outline-none focus:border-amber-500 transition-colors">
+                            </div>
+                            <div class="flex justify-end pt-4">
+                                <button type="button" onclick="nextStep(2)" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-6 py-3 rounded-xl transition-all shadow-lg shadow-amber-500/20">
+                                    Next: Part Details →
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- STEP 2: PART SPECIFICATIONS -->
+                        <div id="step-2" class="space-y-5 hidden">
+                            <h3 class="text-xl font-semibold text-white flex items-center space-x-2">
+                                <span class="bg-amber-500 text-slate-950 w-7 h-7 rounded-full inline-flex items-center justify-center text-sm font-bold">2</span>
+                                <span>Part Specifications & Photo</span>
+                            </h3>
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Part Category *</label>
+                                <select id="partCategory" name="category" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition-colors">
+                                    <option value="Engine & Drivetrain">Engine & Drivetrain</option>
+                                    <option value="Transmission & Clutch">Transmission & Clutch</option>
+                                    <option value="Brakes & Suspension">Brakes & Suspension</option>
+                                    <option value="Electrical & Sensors">Electrical & Sensors</option>
+                                    <option value="Body & Exterior Trim">Body & Exterior Trim</option>
+                                    <option value="Other / Hard-to-Find">Other / Hard-to-Find</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Part Description / Part Number *</label>
+                                <textarea id="partDesc" name="part_description" rows="3" required placeholder="Describe the exact part, side (left/right), or OEM part number needed..." class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition-colors"></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Upload Photo of Part or Damage (Optional)</label>
+                                <input type="file" id="partPhoto" name="part_photo" accept="image/*" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-slate-400 text-sm file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-amber-500 file:text-slate-950 hover:file:bg-amber-400 cursor-pointer">
+                            </div>
+                            <div class="flex justify-between pt-4">
+                                <button type="button" onclick="prevStep(1)" class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold px-6 py-3 rounded-xl transition-all">
+                                    ← Back
+                                </button>
+                                <button type="button" onclick="nextStep(3)" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-6 py-3 rounded-xl transition-all shadow-lg shadow-amber-500/20">
+                                    Next: Contact & Fulfillment →
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- STEP 3: CONTACT & FULFILLMENT -->
+                        <div id="step-3" class="space-y-5 hidden">
+                            <h3 class="text-xl font-semibold text-white flex items-center space-x-2">
+                                <span class="bg-amber-500 text-slate-950 w-7 h-7 rounded-full inline-flex items-center justify-center text-sm font-bold">3</span>
+                                <span>Contact & Fulfillment Options</span>
+                            </h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Full Name *</label>
+                                    <input type="text" id="custName" name="customer_name" required placeholder="John Doe" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition-colors">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Phone Number *</label>
+                                    <input type="tel" id="custPhone" name="customer_phone" required placeholder="(419) 555-0199" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition-colors">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Email Address *</label>
+                                <input type="email" id="custEmail" name="customer_email" required placeholder="buyer@example.com" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition-colors">
+                            </div>
+
+                            <!-- FULFILLMENT SELECTION (REQUEST A CALL / COUNTER PICKUP ONLY) -->
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Preferred Fulfillment Method *</label>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                    <label class="flex items-center space-x-3 p-4 bg-slate-950 border border-amber-500/50 rounded-xl cursor-pointer hover:border-amber-400 transition-all">
+                                        <input type="radio" name="fulfillment" value="Request a Call / Quote" checked class="text-amber-500 focus:ring-amber-500 h-4 w-4">
+                                        <div>
+                                            <span class="block text-sm font-semibold text-white">Request a Call / Quote</span>
+                                            <span class="block text-xs text-slate-400">Shop calls back with price & availability</span>
+                                        </div>
+                                    </label>
+                                    <label class="flex items-center space-x-3 p-4 bg-slate-950 border border-slate-800 rounded-xl cursor-pointer hover:border-amber-400 transition-all">
+                                        <input type="radio" name="fulfillment" value="Counter Pickup / Core Drop-off" class="text-amber-500 focus:ring-amber-500 h-4 w-4">
+                                        <div>
+                                            <span class="block text-sm font-semibold text-white">Counter Pickup</span>
+                                            <span class="block text-xs text-slate-400">Pick up part & drop core at shop</span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-between pt-4">
+                                <button type="button" onclick="prevStep(2)" class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold px-6 py-3 rounded-xl transition-all">
+                                    ← Back
+                                </button>
+                                <button type="submit" id="submitBtn" class="bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-slate-950 font-bold px-8 py-3 rounded-xl transition-all shadow-xl shadow-amber-500/20">
+                                    Submit Parts Request →
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- SUCCESS STATE -->
+                <div id="success-state" class="hidden text-center py-12 space-y-4">
+                    <div class="w-16 h-16 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto text-2xl">✓</div>
+                    <h3 class="text-2xl font-bold text-white">Request Successfully Transmitted!</h3>
+                    <p class="text-slate-400 max-w-md mx-auto text-sm">Your vehicle specifications and part request have been securely routed to the shop team. Reference ID: <span id="refId" class="font-mono text-amber-400 font-bold">#PRT-8492</span></p>
+                    <button onclick="resetForm()" class="mt-6 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold px-6 py-2.5 rounded-xl text-sm transition-all">Submit Another Request</button>
+                </div>
             </div>
+        </div>
+    </section>
 
-            <div>
-              <label for="custEmail" class="block text-xs font-bold text-slate-700 mb-1">Email Address <span class="text-slate-400 font-normal">(Optional)</span></label>
-              <input type="email" id="custEmail" placeholder="you@example.com"
-                class="input-field w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 font-medium transition-all" />
+    <!-- PRICING SECTION (EXACT CURRENT OFFERINGS) -->
+    <section id="pricing" class="py-20 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Simple, Straightforward Pricing</h2>
+                <p class="mt-4 text-slate-400">Add the Auto Parts Finder to your existing site, launch a new shop site, or bundle both.</p>
             </div>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Plan 1: Auto Parts Form -->
+                <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="text-xs font-semibold uppercase tracking-wider text-amber-400 mb-2">Lead Capture Widget</div>
+                        <h3 class="text-2xl font-bold text-white">Auto Parts Form</h3>
+                        <div class="mt-4 flex items-baseline text-white">
+                            <span class="text-4xl font-extrabold tracking-tight">$49</span>
+                            <span class="ml-1 text-slate-400 text-sm">/ month</span>
+                        </div>
+                        <ul class="mt-8 space-y-4 text-sm text-slate-300">
+                            <li class="flex items-center"><span class="text-amber-400 mr-2">✓</span> Embeds onto any existing website</li>
+                            <li class="flex items-center"><span class="text-amber-400 mr-2">✓</span> Year / Make / Model / VIN + Photo upload</li>
+                            <li class="flex items-center"><span class="text-amber-400 mr-2">✓</span> Instant Email & SMS Lead Alerts</li>
+                        </ul>
+                    </div>
+                    <a href="#widget" class="mt-8 block text-center bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold py-3 rounded-xl transition-all">Get Started</a>
+                </div>
 
-            <div class="sm:col-span-2">
-              <label class="block text-xs font-bold text-slate-700 mb-2">Fulfillment Preference <span class="text-red-600">*</span></label>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <label class="cursor-pointer border border-slate-300 rounded-xl p-3.5 flex items-center space-x-3 hover:bg-slate-50 transition-all has-[:checked]:border-accent has-[:checked]:bg-slate-50">
-                  <input type="radio" name="fulfillment" value="Pick Up at Shop" checked class="w-4 h-4 accent-slate-900" />
-                  <div>
-                    <div class="text-xs font-extrabold text-slate-900">Pick Up at Shop</div>
-                    <div class="text-[11px] text-slate-500">Will-call counter pickup</div>
-                  </div>
-                </label>
+                <!-- Plan 2: Complete Bundle -->
+                <div class="bg-slate-900 border-2 border-amber-500 rounded-3xl p-8 flex flex-col justify-between relative shadow-2xl shadow-amber-500/10">
+                    <div class="absolute -top-3.5 left-1/2 transform -translate-x-1/2 bg-amber-500 text-slate-950 text-xs font-extrabold uppercase px-4 py-1 rounded-full">Best Value</div>
+                    <div>
+                        <div class="text-xs font-semibold uppercase tracking-wider text-amber-400 mb-2">Complete Shop Package</div>
+                        <h3 class="text-2xl font-bold text-white">Website + Parts Form</h3>
+                        <div class="mt-4 flex items-baseline text-white">
+                            <span class="text-4xl font-extrabold tracking-tight">$500</span>
+                            <span class="ml-1 text-slate-400 text-sm">one-time (+ $49/mo form)</span>
+                        </div>
+                        <ul class="mt-8 space-y-4 text-sm text-slate-300">
+                            <li class="flex items-center"><span class="text-amber-400 mr-2">✓</span> Custom High-Converting Shop Website</li>
+                            <li class="flex items-center"><span class="text-amber-400 mr-2">✓</span> Auto Parts Finder Pre-Installed</li>
+                            <li class="flex items-center"><span class="text-amber-400 mr-2">✓</span> Mobile-Ready & Fast Loading</li>
+                            <li class="flex items-center"><span class="text-amber-400 mr-2">✓</span> Priority Webhook & Alert Setup</li>
+                        </ul>
+                    </div>
+                    <a href="#widget" class="mt-8 block text-center bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-3 rounded-xl transition-all shadow-lg shadow-amber-500/20">Claim Complete Bundle</a>
+                </div>
 
-                <label class="cursor-pointer border border-slate-300 rounded-xl p-3.5 flex items-center space-x-3 hover:bg-slate-50 transition-all has-[:checked]:border-accent has-[:checked]:bg-slate-50">
-                  <input type="radio" name="fulfillment" value="Local Delivery / Ship" class="w-4 h-4 accent-slate-900" />
-                  <div>
-                    <div class="text-xs font-extrabold text-slate-900">Local Delivery / Ship</div>
-                    <div class="text-[11px] text-slate-500">Deliver to home or garage</div>
-                  </div>
-                </label>
-              </div>
+                <!-- Plan 3: Standalone Website -->
+                <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="text-xs font-semibold uppercase tracking-wider text-amber-400 mb-2">Web Presence</div>
+                        <h3 class="text-2xl font-bold text-white">Custom Shop Website</h3>
+                        <div class="mt-4 flex items-baseline text-white">
+                            <span class="text-4xl font-extrabold tracking-tight">$350</span>
+                            <span class="ml-1 text-slate-400 text-sm">one-time</span>
+                        </div>
+                        <ul class="mt-8 space-y-4 text-sm text-slate-300">
+                            <li class="flex items-center"><span class="text-amber-400 mr-2">✓</span> Clean, Professional Shop Landing Page</li>
+                            <li class="flex items-center"><span class="text-amber-400 mr-2">✓</span> Click-to-Call & Location Directions</li>
+                            <li class="flex items-center"><span class="text-amber-400 mr-2">✓</span> Upgradeable to Parts Form Anytime</li>
+                        </ul>
+                    </div>
+                    <a href="#widget" class="mt-8 block text-center bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold py-3 rounded-xl transition-all">Launch Website</a>
+                </div>
             </div>
-          </div>
-
-          <div class="pt-2 flex flex-col-reverse sm:flex-row items-center justify-between gap-3">
-            <button type="button" onclick="goToStep(2)"
-              class="w-full sm:w-auto px-5 py-3 rounded-xl border border-slate-300 text-slate-700 hover:bg-slate-100 font-bold text-sm transition-all">
-              <i class="fa-solid fa-arrow-left mr-1.5"></i> Back
-            </button>
-            <button type="submit" id="submitBtn"
-              class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-accent font-extrabold text-sm shadow-lg hover:opacity-95 transition-all flex items-center justify-center">
-              <i class="fa-solid fa-paper-plane mr-2"></i> Submit Parts Request
-            </button>
-          </div>
         </div>
+    </section>
 
-      </form>
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 border-t border-slate-900 py-12 text-center text-xs text-slate-500">
+        <p>© 2026 WebsiteRenter.com. All rights reserved.</p>
+    </footer>
 
-      <!-- =================================================================== -->
-      <!-- CONFIRMATION RECEIPT VIEW (Shown after successful submission)       -->
-      <!-- =================================================================== -->
-      <div id="confirmationView" class="hidden p-6 sm:p-8 text-center space-y-5 fade-in">
-        <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto text-3xl shadow-inner">
-          <i class="fa-solid fa-check"></i>
-        </div>
+    <!-- JAVASCRIPT FOR MULTI-STEP WIDGET & MAKE.COM WEBHOOK -->
+    <script>
+        // PASTE YOUR MAKE.COM WEBHOOK URL BELOW:
+        const MAKE_WEBHOOK_URL = 'YOUR_MAKE_WEBHOOK_URL_HERE';
 
-        <div>
-          <span id="demoModeBadge" class="hidden inline-block bg-amber-100 text-amber-800 text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full mb-2">
-            Sandbox Test Mode — Ready for Live Webhook
-          </span>
-          <h2 class="text-2xl font-black text-slate-900">Parts Request Received!</h2>
-          <p class="text-xs sm:text-sm text-slate-600 max-w-md mx-auto mt-1">
-            We've routed your vehicle and part details directly to <strong id="confirmShopName" class="text-slate-900">our parts counter</strong>. Expect a text or call shortly with pricing and availability.
-          </p>
-        </div>
-
-        <!-- Receipt Summary Card -->
-        <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-left max-w-md mx-auto space-y-2 text-xs">
-          <div class="flex justify-between border-b border-slate-200 pb-1.5">
-            <span class="text-slate-500 font-medium">Reference ID:</span>
-            <span id="receiptRefId" class="font-mono font-bold text-slate-900">#PRT-0000</span>
-          </div>
-          <div class="flex justify-between border-b border-slate-200 pb-1.5">
-            <span class="text-slate-500 font-medium">Vehicle:</span>
-            <span id="receiptVehicle" class="font-bold text-slate-900">—</span>
-          </div>
-          <div class="flex justify-between border-b border-slate-200 pb-1.5">
-            <span class="text-slate-500 font-medium">VIN:</span>
-            <span id="receiptVin" class="font-mono font-semibold text-slate-700">—</span>
-          </div>
-          <div class="flex justify-between border-b border-slate-200 pb-1.5">
-            <span class="text-slate-500 font-medium">Part Requested:</span>
-            <span id="receiptPart" class="font-bold text-slate-900 text-right max-w-[200px] truncate">—</span>
-          </div>
-          <div class="flex justify-between">
-            <span class="text-slate-500 font-medium">Fulfillment:</span>
-            <span id="receiptFulfillment" class="font-bold text-accent">—</span>
-          </div>
-        </div>
-
-        <div class="pt-2">
-          <button type="button" onclick="resetWidget()"
-            class="px-6 py-2.5 rounded-xl border border-slate-300 hover:bg-slate-100 text-slate-700 font-bold text-xs transition-all">
-            <i class="fa-solid fa-rotate-left mr-1.5"></i> Request Another Part
-          </button>
-        </div>
-      </div>
-
-      <!-- Subtle Agency Footer -->
-      <div class="bg-slate-50 border-t border-slate-100 px-6 py-2.5 flex items-center justify-between text-[11px] text-slate-400">
-        <span><i class="fa-solid fa-shield-halved text-slate-400 mr-1"></i> Secure Parts Intake</span>
-        <span>Powered by <strong class="text-slate-500">WebsiteRenter.com</strong></span>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- ======================================================================= -->
-  <!-- CENTRAL MULTI-SHOP ROUTING & WIDGET ENGINE                              -->
-  <!-- ======================================================================= -->
-  <script>
-    /**
-     * =========================================================================
-     * 1. CENTRAL MULTI-SHOP CONFIGURATION MAP
-     * Manage all your paying auto shop clients from this single object!
-     * - shopName: Displayed in the widget header & confirmation receipt
-     * - color: Hex color code (without #) matching the shop's website brand
-     * - webhookUrl: Paste each shop's dedicated Make.com / Zapier webhook URL
-     * - status: Set to "active" or "suspended" (Instant Kill-Switch for non-payment)
-     * =========================================================================
-     */
-    const SHOP_CONFIGS = {
-      default: {
-        shopName: "Auto Parts Finder",
-        color: "d32f2f", // Default Automotive Red
-        webhookUrl: "https://hook.us2.make.com/im43dwlniz8jpwva3yb8rr43yqmnk44y",  // <--- YOUR WEBHOOK IS PLACED HERE
-        status: "active"
-      },
-      mikesauto: {
-        shopName: "Mike's Auto Repair & Parts",
-        color: "1d4ed8", // Royal Blue
-        webhookUrl: "",  
-        status: "active"
-      },
-      apexauto: {
-        shopName: "Apex Auto Service",
-        color: "d32f2f", // Crimson Red
-        webhookUrl: "",  
-        status: "active"
-      },
-      delinquentshop: {
-        shopName: "Example Suspended Shop",
-        color: "d32f2f",
-        webhookUrl: "",
-        status: "suspended" // Demonstrates instant remote kill-switch
-      }
-    };
-
-    // Parse URL Parameters (?shopId=mikesauto&color=1d4ed8&webhook=...&status=suspended)
-    const urlParams = new URLSearchParams(window.location.search);
-    const shopIdParam = (urlParams.get("shopId") || "default").toLowerCase().trim();
-    const colorParam = (urlParams.get("color") || "").replace("#", "").trim();
-    const webhookParam = (urlParams.get("webhook") || "").trim();
-    const statusParam = (urlParams.get("status") || "").toLowerCase().trim();
-
-    // Merge base config with any URL overrides
-    const baseConfig = SHOP_CONFIGS[shopIdParam] || SHOP_CONFIGS.default;
-    const ACTIVE_CONFIG = {
-      shopId: shopIdParam,
-      shopName: urlParams.get("shopName") || baseConfig.shopName,
-      color: /^[0-9A-Fa-f]{6}$/.test(colorParam) ? colorParam : baseConfig.color,
-      webhookUrl: webhookParam || baseConfig.webhookUrl,
-      status: statusParam || baseConfig.status
-    };
-
-    /**
-     * Calculate contrasting text color (black or white) for any custom brand hex color
-     */
-    function getContrastYIQ(hexcolor) {
-      const r = parseInt(hexcolor.substr(0, 2), 16);
-      const g = parseInt(hexcolor.substr(2, 2), 16);
-      const b = parseInt(hexcolor.substr(4, 2), 16);
-      const yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
-      return (yiq >= 150) ? "#000000" : "#ffffff";
-    }
-
-    /**
-     * Initialize Widget Branding, Kill-Switch State, and Auto-Resize Messaging
-     */
-    function initWidget() {
-      // 1. Apply Brand Accent Color & Contrasting Text Color
-      const fullHex = "#" + ACTIVE_CONFIG.color;
-      document.documentElement.style.setProperty("--accent-color", fullHex);
-      document.documentElement.style.setProperty("--accent-contrast", getContrastYIQ(ACTIVE_CONFIG.color));
-
-      // 2. Check Kill-Switch Status
-      if (ACTIVE_CONFIG.status === "suspended") {
-        document.getElementById("activeView").classList.add("hidden");
-        document.getElementById("suspendedView").classList.remove("hidden");
-        notifyParentHeight();
-        return;
-      }
-
-      // 3. Apply Shop Display Name
-      if (ACTIVE_CONFIG.shopName && ACTIVE_CONFIG.shopName !== "Auto Parts Finder") {
-        document.getElementById("headerTitle").textContent = ACTIVE_CONFIG.shopName + " — Parts Finder";
-        document.getElementById("confirmShopName").textContent = ACTIVE_CONFIG.shopName;
-      }
-
-      notifyParentHeight();
-    }
-
-    /**
-     * Live 17-Digit VIN Character Counter
-     */
-    function updateVinCounter(input) {
-      input.value = input.value.replace(/[^a-zA-Z0-9]/g, "").toUpperCase();
-      const len = input.value.length;
-      const counter = document.getElementById("vinCounter");
-      counter.textContent = `${len} / 17`;
-      if (len === 17) {
-        counter.className = "text-[11px] font-mono font-extrabold text-emerald-600";
-      } else if (len > 0) {
-        counter.className = "text-[11px] font-mono font-bold text-amber-600";
-      } else {
-        counter.className = "text-[11px] font-mono font-bold text-slate-400";
-      }
-    }
-
-    /**
-     * Error Banner Helpers
-     */
-    function showError(msg) {
-      document.getElementById("errorText").textContent = msg;
-      document.getElementById("errorBanner").classList.remove("hidden");
-      notifyParentHeight();
-    }
-    function hideError() {
-      document.getElementById("errorBanner").classList.add("hidden");
-      notifyParentHeight();
-    }
-
-    /**
-     * Multi-Step Navigation & Validation
-     */
-    function goToStep(targetStep) {
-      hideError();
-
-      // Validate Step 1 before advancing to Step 2
-      if (targetStep === 2) {
-        const year = document.getElementById("vehYear").value.trim();
-        const make = document.getElementById("vehMake").value.trim();
-        const model = document.getElementById("vehModel").value.trim();
-        const vin = document.getElementById("vehVin").value.trim();
-
-        if (!year || !make || !model) {
-          showError("Please enter your vehicle's Year, Make, and Model to continue.");
-          return;
-        }
-        if (vin.length > 0 && vin.length !== 17) {
-          showError("If entering a VIN, please make sure all 17 characters are included (or leave blank).");
-          return;
-        }
-      }
-
-      // Validate Step 2 before advancing to Step 3
-      if (targetStep === 3) {
-        const category = document.getElementById("partCategory").value;
-        const desc = document.getElementById("partDescription").value.trim();
-
-        if (!category || !desc) {
-          showError("Please select a Part Category and describe the part you need.");
-          return;
-        }
-      }
-
-      // Toggle step visibility
-      document.getElementById("step1").classList.add("hidden");
-      document.getElementById("step2").classList.add("hidden");
-      document.getElementById("step3").classList.add("hidden");
-      document.getElementById("step" + targetStep).classList.remove("hidden");
-
-      // Update Progress Bar & Step Indicators
-      const progress1 = document.getElementById("progressBar1");
-      const progress2 = document.getElementById("progressBar2");
-      const badge2 = document.getElementById("stepBadge2");
-      const circle2 = document.getElementById("stepCircle2");
-      const badge3 = document.getElementById("stepBadge3");
-      const circle3 = document.getElementById("stepCircle3");
-
-      if (targetStep === 1) {
-        progress1.style.width = "0%";
-        progress2.style.width = "0%";
-        badge2.className = "flex items-center space-x-2 text-slate-400";
-        circle2.className = "w-6 h-6 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-[11px] font-extrabold";
-        badge3.className = "flex items-center space-x-2 text-slate-400";
-        circle3.className = "w-6 h-6 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-[11px] font-extrabold";
-      } else if (targetStep === 2) {
-        progress1.style.width = "100%";
-        progress2.style.width = "0%";
-        badge2.className = "flex items-center space-x-2 text-slate-900";
-        circle2.className = "w-6 h-6 rounded-full bg-accent flex items-center justify-center text-[11px] font-extrabold";
-        badge3.className = "flex items-center space-x-2 text-slate-400";
-        circle3.className = "w-6 h-6 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-[11px] font-extrabold";
-      } else if (targetStep === 3) {
-        progress1.style.width = "100%";
-        progress2.style.width = "100%";
-        badge2.className = "flex items-center space-x-2 text-slate-900";
-        circle2.className = "w-6 h-6 rounded-full bg-accent flex items-center justify-center text-[11px] font-extrabold";
-        badge3.className = "flex items-center space-x-2 text-slate-900";
-        circle3.className = "w-6 h-6 rounded-full bg-accent flex items-center justify-center text-[11px] font-extrabold";
-      }
-
-      notifyParentHeight();
-    }
-
-    /**
-     * Form Submission & Real Webhook POST Transmission
-     */
-    document.getElementById("partsFinderForm").addEventListener("submit", async function (e) {
-      e.preventDefault();
-      hideError();
-
-      const custName = document.getElementById("custName").value.trim();
-      const custPhone = document.getElementById("custPhone").value.trim();
-
-      if (!custName || !custPhone) {
-        showError("Please enter your Full Name and Mobile Phone Number so we can send your quote.");
-        return;
-      }
-
-      const submitBtn = document.getElementById("submitBtn");
-      const originalBtnHtml = submitBtn.innerHTML;
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i> Sending to Parts Counter...';
-
-      const referenceId = "PRT-" + Math.floor(1000 + Math.random() * 9000);
-      const fulfillmentChoice = document.querySelector('input[name="fulfillment"]:checked').value;
-
-      // Structured JSON Payload for Make.com / Zapier Webhook
-      const payload = {
-        event: "AUTO_PARTS_INQUIRY",
-        reference_id: referenceId,
-        shop_id: ACTIVE_CONFIG.shopId,
-        shop_name: ACTIVE_CONFIG.shopName,
-        submitted_at: new Date().toISOString(),
-        vehicle: {
-          year: document.getElementById("vehYear").value.trim(),
-          make: document.getElementById("vehMake").value.trim(),
-          model: document.getElementById("vehModel").value.trim(),
-          trim: document.getElementById("vehTrim").value.trim() || "Not specified",
-          vin: document.getElementById("vehVin").value.trim() || "Not provided"
-        },
-        part: {
-          category: document.getElementById("partCategory").value,
-          condition_preference: document.getElementById("partCondition").value,
-          part_number: document.getElementById("partNumber").value.trim() || "Not provided",
-          description: document.getElementById("partDescription").value.trim()
-        },
-        customer: {
-          name: custName,
-          phone: custPhone,
-          email: document.getElementById("custEmail").value.trim() || "Not provided",
-          fulfillment: fulfillmentChoice
-        }
-      };
-
-      try {
-        if (ACTIVE_CONFIG.webhookUrl) {
-          // Live Webhook Transmission
-          const response = await fetch(ACTIVE_CONFIG.webhookUrl, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload)
-          });
-
-          if (!response.ok) {
-            throw new Error("Webhook server responded with status " + response.status);
-          }
-          document.getElementById("demoModeBadge").classList.add("hidden");
-        } else {
-          // Graceful Sandbox Simulation when no live webhook URL is configured yet
-          await new Promise((resolve) => setTimeout(resolve, 650));
-          console.log("Sandbox Parts Inquiry Payload:", payload);
-          document.getElementById("demoModeBadge").classList.remove("hidden");
+        function nextStep(step) {
+            if (step === 2) {
+                const year = document.getElementById('vehYear').value;
+                const make = document.getElementById('vehMake').value;
+                const model = document.getElementById('vehModel').value;
+                if (!year || !make || !model) {
+                    alert('Please fill out the Year, Make, and Model before proceeding.');
+                    return;
+                }
+                document.getElementById('step-1').classList.add('hidden');
+                document.getElementById('step-2').classList.remove('hidden');
+                document.getElementById('progress-bar').style.width = '66%';
+                document.getElementById('step-label-1').classList.remove('text-amber-400');
+                document.getElementById('step-label-2').classList.add('text-amber-400');
+            } else if (step === 3) {
+                const desc = document.getElementById('partDesc').value;
+                if (!desc) {
+                    alert('Please enter a part description or part number.');
+                    return;
+                }
+                document.getElementById('step-2').classList.add('hidden');
+                document.getElementById('step-3').classList.remove('hidden');
+                document.getElementById('progress-bar').style.width = '100%';
+                document.getElementById('step-label-2').classList.remove('text-amber-400');
+                document.getElementById('step-label-3').classList.add('text-amber-400');
+            }
         }
 
-        // Populate Receipt Summary
-        document.getElementById("receiptRefId").textContent = "#" + referenceId;
-        document.getElementById("receiptVehicle").textContent = `${payload.vehicle.year} ${payload.vehicle.make} ${payload.vehicle.model}`;
-        document.getElementById("receiptVin").textContent = payload.vehicle.vin;
-        document.getElementById("receiptPart").textContent = `${payload.part.category} — ${payload.part.description}`;
-        document.getElementById("receiptFulfillment").textContent = payload.customer.fulfillment;
+        function prevStep(step) {
+            if (step === 1) {
+                document.getElementById('step-2').classList.add('hidden');
+                document.getElementById('step-1').classList.remove('hidden');
+                document.getElementById('progress-bar').style.width = '33%';
+                document.getElementById('step-label-2').classList.remove('text-amber-400');
+                document.getElementById('step-label-1').classList.add('text-amber-400');
+            } else if (step === 2) {
+                document.getElementById('step-3').classList.add('hidden');
+                document.getElementById('step-2').classList.remove('hidden');
+                document.getElementById('progress-bar').style.width = '66%';
+                document.getElementById('step-label-3').classList.remove('text-amber-400');
+                document.getElementById('step-label-2').classList.add('text-amber-400');
+            }
+        }
 
-        // Show Confirmation Receipt
-        document.getElementById("partsFinderForm").classList.add("hidden");
-        document.getElementById("confirmationView").classList.remove("hidden");
-        notifyParentHeight();
+        document.getElementById('partsForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending Request...';
 
-      } catch (err) {
-        console.error("Submission error:", err);
-        showError("We encountered a temporary connection issue sending your request. Please try again.");
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalBtnHtml;
-      }
-    });
+            const randomId = '#PRT-' + Math.floor(1000 + Math.random() * 9000);
+            document.getElementById('refId').textContent = randomId;
 
-    /**
-     * Reset Form for Additional Inquiries
-     */
-    function resetWidget() {
-      document.getElementById("partsFinderForm").reset();
-      updateVinCounter(document.getElementById("vehVin"));
-      document.getElementById("confirmationView").classList.add("hidden");
-      document.getElementById("partsFinderForm").classList.remove("hidden");
-      goToStep(1);
-    }
+            const formData = new FormData(this);
+            formData.append('reference_id', randomId);
 
-    /**
-     * Broadcast height to parent iframe (if parent site uses auto-resize listener)
-     */
-    function notifyParentHeight() {
-      if (window.parent && window.parent !== window) {
-        const height = document.documentElement.scrollHeight;
-        window.parent.postMessage({ type: "WR_WIDGET_RESIZE", height: height }, "*");
-      }
-    }
+            try {
+                if (MAKE_WEBHOOK_URL && MAKE_WEBHOOK_URL !== 'https://hook.us2.make.com/im43dwlniz8jpwva3yb8rr43yqmnk44y') {
+                    await fetch(MAKE_WEBHOOK_URL, {
+                        method: 'POST',
+                        body: formData
+                    });
+                }
+            } catch (err) {
+                console.error('Webhook submission error:', err);
+            }
 
-    // Boot widget on load
-    window.addEventListener("DOMContentLoaded", initWidget);
-    window.addEventListener("resize", notifyParentHeight);
-  </script>
+            document.getElementById('form-container').classList.add('hidden');
+            document.getElementById('success-state').classList.remove('hidden');
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Submit Parts Request →';
+        });
+
+        function resetForm() {
+            document.getElementById('partsForm').reset();
+            document.getElementById('success-state').classList.add('hidden');
+            document.getElementById('form-container').classList.remove('hidden');
+            document.getElementById('step-3').classList.add('hidden');
+            document.getElementById('step-1').classList.remove('hidden');
+            document.getElementById('progress-bar').style.width = '33%';
+            document.getElementById('step-label-3').classList.remove('text-amber-400');
+            document.getElementById('step-label-1').classList.add('text-amber-400');
+        }
+    </script>
 </body>
 </html>
