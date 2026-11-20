@@ -4,8 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WebsiteRenter.com — Rent High-Converting Websites for Small Businesses</title>
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Inter Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <script>
     tailwind.config = {
@@ -52,6 +55,7 @@
   <!-- Header Navigation -->
   <header class="border-b border-brand-border bg-black/95 backdrop-blur-md sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-8">
+      <!-- Logo -->
       <div class="flex items-center space-x-3 shrink-0 mr-4 lg:mr-12">
         <div class="w-10 h-10 rounded-xl bg-brand-yellow flex items-center justify-center shadow-lg shadow-brand-yellow/20 border border-black">
           <i class="fa-solid fa-laptop-code text-black text-lg"></i>
@@ -59,28 +63,33 @@
         <span class="text-xl font-black tracking-tight text-white">Website<span class="text-brand-yellow">Renter</span><span class="text-xs font-mono text-neutral-400 font-normal ml-1">.com</span></span>
       </div>
 
+      <!-- Nav Items -->
       <nav class="hidden md:flex items-center space-x-10 text-sm font-medium text-neutral-300 flex-1 justify-center">
         <a href="#demo-preview-container" class="hover:text-brand-yellow transition-colors">How It Works</a>
         <a href="#auto-shop-spotlight" class="hover:text-brand-yellow transition-colors">Auto Shop Parts Form</a>
         <a href="#pricing" class="hover:text-brand-yellow transition-colors">Pricing & Plans</a>
       </nav>
 
+      <!-- Header Action CTA -->
       <div class="flex items-center space-x-3 shrink-0">
-        <button onclick="openModal('Full Small Business Website Lease ($500 + $350/mo)')" class="hidden sm:inline-flex items-center justify-center px-4 py-2 rounded-lg text-sm font-semibold text-neutral-200 border border-brand-border hover:border-brand-yellow hover:text-brand-yellow transition-all">
+        <button onclick="openModal('Full Small Business Website Lease ($250 Security Deposit + $149/mo)')" class="hidden sm:inline-flex items-center justify-center px-4 py-2 rounded-lg text-sm font-semibold text-neutral-200 border border-brand-border hover:border-brand-yellow hover:text-brand-yellow transition-all">
           <i class="fa-solid fa-magnifying-glass mr-2 text-brand-yellow"></i> Check Domain
         </button>
-        <button onclick="openModal('Full Small Business Website Lease ($500 + $350/mo)')" class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg text-sm font-extrabold text-black bg-brand-yellow hover:bg-brand-yellowHover shadow-lg shadow-brand-yellow/20 transition-all scale-100 active:scale-95">
+        <button onclick="openModal('Full Small Business Website Lease ($250 Security Deposit + $149/mo)')" class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg text-sm font-extrabold text-black bg-brand-yellow hover:bg-brand-yellowHover shadow-lg shadow-brand-yellow/20 transition-all scale-100 active:scale-95">
           Rent Your Site
         </button>
       </div>
     </div>
   </header>
 
-  <!-- HERO SECTION -->
+  <!-- HERO SECTION (PRIMARY FOCUS: ALL SMALL BUSINESSES) -->
   <section class="relative pt-12 pb-20 md:pt-16 md:pb-24 overflow-hidden bg-black">
+    <!-- Subtle Electric Yellow Glow -->
     <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-brand-yellow/10 rounded-full blur-3xl pointer-events-none"></div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+      <!-- Hero Top Pill -->
       <div class="flex justify-center mb-6">
         <div class="inline-flex items-center space-x-2 bg-brand-card border border-brand-border px-4 py-1.5 rounded-full text-xs sm:text-sm text-neutral-300">
           <span class="w-2 h-2 rounded-full bg-brand-yellow animate-pulse"></span>
@@ -88,6 +97,7 @@
         </div>
       </div>
 
+      <!-- Main Headline & Subheadline -->
       <div class="text-center max-w-4xl mx-auto mb-10">
         <h1 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-white leading-tight mb-6">
           Stop Using Just A Website. <br class="hidden sm:block"/>
@@ -97,8 +107,9 @@
           Whether you run a local contracting business, salon, restaurant, medical office, or auto repair shop—we build, host, optimize for Google, and manage your complete web presence for a predictable monthly lease.
         </p>
 
+        <!-- CTA & Primary Buttons -->
         <div class="mt-8 flex flex-col sm:flex-row justify-center items-center gap-4">
-          <button onclick="openModal('Full Small Business Website Lease ($500 + $350/mo)')" class="w-full sm:w-auto px-8 py-4 rounded-xl text-base font-extrabold text-black bg-brand-yellow hover:bg-brand-yellowHover shadow-xl shadow-brand-yellow/20 transition-all transform hover:-translate-y-0.5 active:translate-y-0">
+          <button onclick="openModal('Full Small Business Website Lease ($250 Security Deposit + $149/mo)')" class="w-full sm:w-auto px-8 py-4 rounded-xl text-base font-extrabold text-black bg-brand-yellow hover:bg-brand-yellowHover shadow-xl shadow-brand-yellow/20 transition-all transform hover:-translate-y-0.5 active:translate-y-0">
             <i class="fa-solid fa-key mr-2"></i> Claim Your Small Business Site
           </button>
           <a href="#demo-preview-container" onclick="switchToTab('demo')" class="w-full sm:w-auto px-8 py-4 rounded-xl text-base font-semibold text-white bg-brand-card border border-brand-border hover:border-brand-yellow hover:text-brand-yellow transition-all text-center">
@@ -106,6 +117,7 @@
           </a>
         </div>
 
+        <!-- Industry Pills -->
         <div class="mt-10 flex flex-wrap justify-center items-center gap-3 text-xs font-semibold text-neutral-300">
           <span class="bg-brand-card px-3 py-1.5 rounded-lg border border-brand-border"><i class="fa-solid fa-wrench text-brand-yellow mr-1.5"></i> Auto Shops</span>
           <span class="bg-brand-card px-3 py-1.5 rounded-lg border border-brand-border"><i class="fa-solid fa-hammer text-brand-yellow mr-1.5"></i> Contractors & HVAC</span>
@@ -117,6 +129,8 @@
 
       <!-- INTERACTIVE PREVIEW TOGGLE CONTAINER -->
       <div id="demo-preview-container" class="mt-12 bg-brand-card border border-brand-border rounded-2xl shadow-2xl overflow-hidden">
+
+        <!-- Toggle Control Bar -->
         <div class="bg-brand-surface p-4 border-b border-brand-border flex flex-col sm:flex-row items-center justify-between gap-4">
           <div class="flex items-center space-x-2">
             <div class="w-3 h-3 rounded-full bg-neutral-700"></div>
@@ -125,6 +139,7 @@
             <span class="text-xs font-mono text-neutral-500 ml-2 hidden sm:inline-block">https://websiterenter.com/interactive-preview</span>
           </div>
 
+          <!-- The View Mode Switcher -->
           <div class="bg-black p-1 rounded-xl border border-brand-border flex items-center space-x-1 w-full sm:w-auto">
             <button id="tab-overview-btn" onclick="switchToTab('overview')" class="flex-1 sm:flex-none px-5 py-2 rounded-lg text-xs sm:text-sm font-extrabold transition-all duration-200 bg-brand-yellow text-black shadow-md">
               <i class="fa-solid fa-store mr-2"></i> Small Business Overview
@@ -135,27 +150,37 @@
           </div>
         </div>
 
-        <!-- TAB CONTENT 1: OVERVIEW -->
+        <!-- TAB CONTENT 1: SMALL BUSINESS WEBSITE RENTER OVERVIEW -->
         <div id="tab-overview-content" class="p-6 md:p-10 space-y-8 bg-black">
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+            <!-- Feature 1 -->
             <div class="bg-brand-card border border-brand-border rounded-xl p-6 hover:border-brand-yellow/60 transition-all">
-              <div class="w-12 h-12 rounded-lg bg-brand-yellow text-black flex items-center justify-center mb-4 text-lg font-black">01</div>
+              <div class="w-12 h-12 rounded-lg bg-brand-yellow text-black flex items-center justify-center mb-4 text-lg font-black">
+                01
+              </div>
               <h3 class="text-lg font-bold text-white mb-2">Turnkey Domain & Build</h3>
               <p class="text-sm text-neutral-400 leading-relaxed">
                 Whether we pre-register an exact-match local domain for your business or connect your existing domain, we build a fast, mobile-ready storefront engineered to convert local visitors into paying calls.
               </p>
             </div>
 
+            <!-- Feature 2 -->
             <div class="bg-brand-card border border-brand-border rounded-xl p-6 hover:border-brand-yellow/60 transition-all">
-              <div class="w-12 h-12 rounded-lg bg-brand-yellow text-black flex items-center justify-center mb-4 text-lg font-black">02</div>
+              <div class="w-12 h-12 rounded-lg bg-brand-yellow text-black flex items-center justify-center mb-4 text-lg font-black">
+                02
+              </div>
               <h3 class="text-lg font-bold text-white mb-2">100% Managed Hosting & Updates</h3>
               <p class="text-sm text-neutral-400 leading-relaxed">
                 Never pay hourly developer rates again. Hosting, SSL security, speed optimization, and unlimited text, photo, or service updates are completely handled under your monthly lease.
               </p>
             </div>
 
+            <!-- Feature 3 -->
             <div class="bg-brand-card border border-brand-border rounded-xl p-6 hover:border-brand-yellow/60 transition-all">
-              <div class="w-12 h-12 rounded-lg bg-brand-yellow text-black flex items-center justify-center mb-4 text-lg font-black">03</div>
+              <div class="w-12 h-12 rounded-lg bg-brand-yellow text-black flex items-center justify-center mb-4 text-lg font-black">
+                03
+              </div>
               <h3 class="text-lg font-bold text-white mb-2">Industry-Specific Lead Widgets</h3>
               <p class="text-sm text-neutral-400 leading-relaxed">
                 Every rented site includes smart intake forms that text or email leads straight to your cell phone—including specialized tools like our 3-step Auto Parts Finder for repair shops.
@@ -163,6 +188,7 @@
             </div>
           </div>
 
+          <!-- ECONOMICS / ROI BREAKDOWN FOR BOTH TIERS -->
           <div class="bg-brand-card border border-brand-yellow/40 rounded-xl p-6 md:p-8">
             <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
               <div class="space-y-4 max-w-3xl">
@@ -171,12 +197,14 @@
                 </div>
                 <h4 class="text-2xl font-black text-white">Predictable Monthly Overhead That Pays For Itself</h4>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
+                  <!-- $149/mo Website ROI -->
                   <div class="bg-black border border-brand-border rounded-lg p-4">
-                    <div class="text-xs font-bold text-brand-yellow uppercase mb-1">Full Small Business Website ($350/mo)</div>
+                    <div class="text-xs font-bold text-brand-yellow uppercase mb-1">Full Small Business Website ($149/mo)</div>
                     <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed">
-                      Traditional agencies charge $4,000+ upfront. With WebsiteRenter ($500 setup + $350/mo), <strong class="text-brand-yellow font-extrabold">at an average sale ticket of $50.00, just 7 sales pays for the entire monthly website lease.</strong>
+                      Traditional agencies charge $4,000+ upfront. With WebsiteRenter ($250 security deposit + $149/mo lease), <strong class="text-brand-yellow font-extrabold">at an average sale ticket of $50.00, just 3 sales pays for the entire monthly website lease.</strong>
                     </p>
                   </div>
+                  <!-- $49/mo Auto Parts Form ROI -->
                   <div class="bg-black border border-brand-border rounded-lg p-4">
                     <div class="text-xs font-bold text-brand-yellow uppercase mb-1">Auto Parts Finder Form Only ($49/mo)</div>
                     <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed">
@@ -194,6 +222,8 @@
 
         <!-- TAB CONTENT 2: LIVE AUTO SHOP DEMO PREVIEW -->
         <div id="tab-demo-content" class="hidden">
+
+          <!-- Mock Browser Address Bar -->
           <div class="bg-neutral-900 px-4 py-2.5 border-b border-brand-border flex items-center justify-between text-xs text-neutral-400">
             <div class="flex items-center space-x-2">
               <i class="fa-solid fa-lock text-brand-yellow"></i>
@@ -203,7 +233,10 @@
             <span class="text-neutral-400 hidden sm:inline"><i class="fa-solid fa-bolt text-brand-yellow mr-1"></i> Powered by WebsiteRenter.com</span>
           </div>
 
+          <!-- MOCK AUTO SHOP WEBSITE INSIDE THE DEMO TAB -->
           <div class="bg-black text-neutral-100 max-h-[820px] overflow-y-auto">
+
+            <!-- Mock Auto Shop Header -->
             <div class="bg-brand-surface border-b border-brand-border py-4 px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
               <div class="flex items-center space-x-3">
                 <div class="w-9 h-9 rounded bg-auto-red flex items-center justify-center text-white font-black">
@@ -221,8 +254,11 @@
               </div>
             </div>
 
+            <!-- LIVE AUTO PARTS FINDER FORM EMBEDDED -->
             <div id="demo-parts-form" class="py-10 px-4 sm:px-6 bg-black">
               <div class="max-w-2xl mx-auto bg-brand-card border border-brand-border rounded-2xl p-6 sm:p-8 shadow-2xl relative">
+
+                <!-- Badge indicating this form is a WebsiteRenter remote widget -->
                 <div class="absolute -top-3 right-6 bg-brand-yellow text-black text-[10px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full shadow">
                   <i class="fa-solid fa-code mr-1"></i> 1-Line Embed Widget
                 </div>
@@ -234,7 +270,10 @@
                   <p class="text-xs text-neutral-400 mt-1">Submit a parts inquiry below—vehicle specs, photo, and fulfillment choice route instantly to the shop's email and phone.</p>
                 </div>
 
+                <!-- Live Multi-Part Form Connected to Make.com Webhook -->
                 <form id="demoPartsForm" enctype="multipart/form-data" onsubmit="handleDemoSubmit(event)">
+
+                  <!-- Section 1: Vehicle Information -->
                   <div class="text-xs font-bold text-auto-red uppercase tracking-wider mb-3">1. Vehicle Details</div>
                   <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                     <div>
@@ -259,6 +298,7 @@
                     </div>
                   </div>
 
+                  <!-- Section 2: Part Request Details & Photo Upload -->
                   <div class="text-xs font-bold text-auto-red uppercase tracking-wider mb-3">2. Part Details & Photo</div>
                   <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                     <div>
@@ -288,6 +328,7 @@
                     </div>
                   </div>
 
+                  <!-- Section 3: Contact Info & Fulfillment -->
                   <div class="text-xs font-bold text-auto-red uppercase tracking-wider mb-3">3. Contact & Fulfillment</div>
                   <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                     <div>
@@ -304,6 +345,7 @@
                     </div>
                   </div>
 
+                  <!-- Fulfillment Selector (Request a Call / Counter Pickup Only) -->
                   <div class="mb-6">
                     <label class="block text-xs font-medium text-neutral-300 mb-2">Preferred Fulfillment Option *</label>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -329,6 +371,7 @@
                   </button>
                 </form>
 
+                <!-- Live Webhook Confirmation Output -->
                 <div id="demoWebhookResponse" class="hidden mt-4 p-4 bg-neutral-950 border border-brand-yellow rounded-lg text-xs text-neutral-200">
                   <div class="font-bold text-brand-yellow mb-1 flex items-center">
                     <i class="fa-solid fa-circle-check mr-2"></i> Parts Request Transmitted!
@@ -336,8 +379,10 @@
                   <p class="text-neutral-300">Your vehicle specs, part photo, and fulfillment request have been routed directly to the shop's inbox and phone.</p>
                   <pre id="demoJsonOutput" class="mt-2 bg-black p-2.5 rounded border border-brand-border font-mono text-[10px] text-brand-yellow overflow-x-auto"></pre>
                 </div>
+
               </div>
             </div>
+
           </div>
         </div>
 
@@ -350,25 +395,43 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="bg-black border-2 border-brand-yellow rounded-3xl p-8 md:p-12 shadow-2xl">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+
+          <!-- Left Column: Copy & Value Prop -->
           <div class="lg:col-span-7 space-y-5">
             <div class="inline-flex items-center space-x-2 bg-brand-yellow text-black px-3.5 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider">
               <i class="fa-solid fa-car-burst"></i>
               <span>Auto Repair & Parts Shop Add-On</span>
             </div>
+
             <h2 class="text-3xl sm:text-4xl font-black text-white leading-tight">
               Own an Auto Shop? Get Your <span class="text-brand-yellow">Custom Auto Parts Finder Form</span> Added to Your Site.
             </h2>
+
             <p class="text-neutral-300 text-sm sm:text-base leading-relaxed">
               Already have a website for your shop? Stop wasting hours on the phone playing tag with customers who don't know their vehicle specs. We brand-match our 3-step Auto Parts Finder Form to your shop colors, wire it straight to your dedicated shop email or cell phone, test it live, and give you a single line of code to paste on your site.
             </p>
+
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs sm:text-sm text-neutral-200">
-              <div class="flex items-center space-x-2.5"><i class="fa-solid fa-check-circle text-brand-yellow"></i><span>Captures Year, Make, Model & 17-Digit VIN</span></div>
-              <div class="flex items-center space-x-2.5"><i class="fa-solid fa-check-circle text-brand-yellow"></i><span>Part Photo Upload + Call / Counter Pickup</span></div>
-              <div class="flex items-center space-x-2.5"><i class="fa-solid fa-check-circle text-brand-yellow"></i><span>Routes Direct to Your Cell Phone or Email</span></div>
-              <div class="flex items-center space-x-2.5"><i class="fa-solid fa-check-circle text-brand-yellow"></i><span>Zero Passwords Needed — 1-Line Paste</span></div>
+              <div class="flex items-center space-x-2.5">
+                <i class="fa-solid fa-check-circle text-brand-yellow"></i>
+                <span>Captures Year, Make, Model & 17-Digit VIN</span>
+              </div>
+              <div class="flex items-center space-x-2.5">
+                <i class="fa-solid fa-check-circle text-brand-yellow"></i>
+                <span>Part Photo Upload + Call / Counter Pickup</span>
+              </div>
+              <div class="flex items-center space-x-2.5">
+                <i class="fa-solid fa-check-circle text-brand-yellow"></i>
+                <span>Routes Direct to Your Cell Phone or Email</span>
+              </div>
+              <div class="flex items-center space-x-2.5">
+                <i class="fa-solid fa-check-circle text-brand-yellow"></i>
+                <span>Zero Passwords Needed — 1-Line Paste</span>
+              </div>
             </div>
           </div>
 
+          <!-- Right Column: Pricing Card & Claim Button -->
           <div class="lg:col-span-5 bg-brand-card border border-brand-border rounded-2xl p-6 sm:p-8 flex flex-col justify-between">
             <div>
               <div class="text-xs font-bold uppercase tracking-wider text-brand-yellow mb-1">Complete Turnkey Form Setup</div>
@@ -383,6 +446,7 @@
                 Includes full brand color matching, live sandbox verification before going public, instant lead routing, and ongoing updates whenever you need changes.
               </p>
             </div>
+
             <div class="space-y-3">
               <button onclick="openModal('Custom Auto Parts Finder Form ($500 + $49/mo)')" class="w-full py-4 px-6 rounded-xl bg-brand-yellow hover:bg-brand-yellowHover text-black font-black text-sm sm:text-base uppercase tracking-wide transition-all shadow-lg shadow-brand-yellow/20">
                 <i class="fa-solid fa-bolt mr-2"></i> Claim Your Auto Parts Form
@@ -392,6 +456,7 @@
               </a>
             </div>
           </div>
+
         </div>
       </div>
     </div>
@@ -400,22 +465,27 @@
   <!-- PRICING SECTION -->
   <section id="pricing" class="py-20 bg-black">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
       <div class="text-center max-w-3xl mx-auto mb-16">
         <h2 class="text-3xl font-black text-white sm:text-4xl">Simple, Transparent Pricing</h2>
         <p class="text-neutral-400 mt-3 text-sm sm:text-base">Choose the standalone Auto Parts Finder Form for your existing shop site, or lease a complete small business website.</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+
+        <!-- Standalone Widget Plan ($500 + $49/mo) -->
         <div class="bg-brand-card border border-brand-border rounded-2xl p-8 flex flex-col justify-between hover:border-brand-yellow/50 transition-all">
           <div>
             <div class="text-xs font-bold uppercase tracking-wider text-brand-yellow mb-2">For Existing Auto Shop Sites</div>
             <h3 class="text-2xl font-bold text-white mb-3">Custom Auto Parts Finder Form</h3>
             <p class="text-xs text-neutral-400 mb-6">Add our 3-step VIN & parts request widget directly to your current website without changing hosts.</p>
+
             <div class="mb-6 pb-6 border-b border-brand-border">
               <span class="text-4xl font-black text-white">$500</span>
               <span class="text-neutral-400 text-sm"> one-time setup & test run</span>
               <span class="text-brand-yellow font-bold text-sm block mt-1">+ $49/month managed hosting & updates</span>
             </div>
+
             <ul class="space-y-3 text-xs sm:text-sm text-neutral-300 mb-8">
               <li class="flex items-center"><i class="fa-solid fa-check text-brand-yellow mr-2.5"></i> Custom matched to your shop's brand colors</li>
               <li class="flex items-center"><i class="fa-solid fa-check text-brand-yellow mr-2.5"></i> Year, Make, Model & 17-Digit VIN intake</li>
@@ -424,34 +494,46 @@
               <li class="flex items-center"><i class="fa-solid fa-check text-brand-yellow mr-2.5"></i> 1 single job covers the $49/mo subscription</li>
             </ul>
           </div>
+
           <button onclick="openModal('Custom Auto Parts Finder Form ($500 + $49/mo)')" class="w-full py-3.5 rounded-xl border-2 border-brand-yellow text-brand-yellow hover:bg-brand-yellow hover:text-black font-extrabold text-sm transition-all">
             Claim Your Auto Parts Form ($500 + $49/mo)
           </button>
         </div>
 
+        <!-- Full Small Business Website Lease Plan ($250 Security Deposit + $149/mo) -->
         <div class="bg-brand-card border-2 border-brand-yellow rounded-2xl p-8 flex flex-col justify-between relative shadow-2xl shadow-brand-yellow/10">
-          <div class="absolute -top-3.5 right-6 bg-brand-yellow text-black text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full">All Small Businesses</div>
+          <div class="absolute -top-3.5 right-6 bg-brand-yellow text-black text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full">
+            Limited Offer • Half-Off Deposit
+          </div>
+
           <div>
             <div class="text-xs font-bold uppercase tracking-wider text-brand-yellow mb-2">Turnkey Small Business Website</div>
             <h3 class="text-2xl font-bold text-white mb-3">Full Website Build & Monthly Lease</h3>
             <p class="text-xs text-neutral-400 mb-6">Complete website design, domain setup, managed cloud hosting, lead capture, and local Google SEO for any small business.</p>
+
             <div class="mb-6 pb-6 border-b border-brand-border">
-              <span class="text-4xl font-black text-white">$500</span>
-              <span class="text-neutral-400 text-sm"> one-time build & setup</span>
-              <span class="text-brand-yellow font-bold text-sm block mt-1">+ $350/month full site management</span>
+              <div class="flex items-baseline gap-2.5 flex-wrap">
+                <span class="text-xl font-bold text-neutral-500 line-through">$500</span>
+                <span class="text-4xl font-black text-white">$250</span>
+                <span class="text-neutral-300 text-sm font-semibold"> security deposit</span>
+              </div>
+              <span class="text-brand-yellow font-bold text-sm block mt-1">+ $149/month lease rent & full site management</span>
             </div>
+
             <ul class="space-y-3 text-xs sm:text-sm text-neutral-200 mb-8">
               <li class="flex items-center"><i class="fa-solid fa-check text-brand-yellow mr-2.5"></i> Custom-built high-converting website for your niche</li>
               <li class="flex items-center"><i class="fa-solid fa-check text-brand-yellow mr-2.5"></i> Domain registration / DNS setup & fast cloud hosting</li>
               <li class="flex items-center"><i class="fa-solid fa-check text-brand-yellow mr-2.5"></i> Instant SMS/email lead forms (including Parts Form for shops)</li>
               <li class="flex items-center"><i class="fa-solid fa-check text-brand-yellow mr-2.5"></i> Unlimited content, photo & offer updates included</li>
-              <li class="flex items-center"><i class="fa-solid fa-check text-brand-yellow mr-2.5"></i> At an average sale ticket of $50.00, just 7 sales pays for your entire monthly website lease</li>
+              <li class="flex items-center"><i class="fa-solid fa-check text-brand-yellow mr-2.5"></i> At an average sale ticket of $50.00, just 3 sales pays for your entire monthly website lease</li>
             </ul>
           </div>
-          <button onclick="openModal('Full Small Business Website Lease ($500 + $350/mo)')" class="w-full py-3.5 rounded-xl bg-brand-yellow hover:bg-brand-yellowHover text-black font-extrabold text-sm transition-all shadow-lg shadow-brand-yellow/20">
-            Rent Your Business Website ($500 + $350/mo)
+
+          <button onclick="openModal('Full Small Business Website Lease ($250 Security Deposit + $149/mo)')" class="w-full py-3.5 rounded-xl bg-brand-yellow hover:bg-brand-yellowHover text-black font-extrabold text-sm transition-all shadow-lg shadow-brand-yellow/20">
+            Rent Your Business Website ($250 Deposit + $149/mo)
           </button>
         </div>
+
       </div>
     </div>
   </section>
@@ -479,11 +561,15 @@
           <span class="text-[10px] font-extrabold uppercase tracking-wider text-brand-yellow">NATHANIEL ADS LLC • Official Policy</span>
           <h3 id="legalModalTitle" class="text-xl font-black text-white">Terms & Conditions</h3>
         </div>
-        <button onclick="closeLegalModal()" class="text-neutral-400 hover:text-brand-yellow text-xl p-1"><i class="fa-solid fa-xmark"></i></button>
+        <button onclick="closeLegalModal()" class="text-neutral-400 hover:text-brand-yellow text-xl p-1">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
       </div>
       <div id="legalModalBody" class="overflow-y-auto pr-2 space-y-4 text-xs sm:text-sm text-neutral-300 leading-relaxed"></div>
       <div class="border-t border-brand-border pt-4 mt-6 flex justify-end">
-        <button onclick="closeLegalModal()" class="px-6 py-2.5 rounded-lg bg-brand-yellow hover:bg-brand-yellowHover text-black font-extrabold text-xs uppercase tracking-wider">Close Document</button>
+        <button onclick="closeLegalModal()" class="px-6 py-2.5 rounded-lg bg-brand-yellow hover:bg-brand-yellowHover text-black font-extrabold text-xs uppercase tracking-wider">
+          Close Document
+        </button>
       </div>
     </div>
   </div>
@@ -491,10 +577,14 @@
   <!-- CLAIM / ONBOARDING MODAL -->
   <div id="claimModal" class="fixed inset-0 bg-black/85 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
     <div class="bg-brand-card border-2 border-brand-yellow rounded-2xl max-w-md w-full p-6 relative shadow-2xl">
-      <button onclick="closeModal()" class="absolute top-4 right-4 text-neutral-400 hover:text-brand-yellow text-lg"><i class="fa-solid fa-xmark"></i></button>
+      <button onclick="closeModal()" class="absolute top-4 right-4 text-neutral-400 hover:text-brand-yellow text-lg">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
 
       <div class="text-center mb-6">
-        <div class="w-12 h-12 rounded-xl bg-brand-yellow text-black flex items-center justify-center mx-auto mb-3 text-xl font-black"><i class="fa-solid fa-key"></i></div>
+        <div class="w-12 h-12 rounded-xl bg-brand-yellow text-black flex items-center justify-center mx-auto mb-3 text-xl font-black">
+          <i class="fa-solid fa-key"></i>
+        </div>
         <h3 class="text-xl font-black text-white">Get Started With WebsiteRenter</h3>
         <p class="text-xs text-neutral-400 mt-1">Fill out your business info below and we will reach out to confirm your domain and launch your setup.</p>
       </div>
@@ -504,7 +594,7 @@
           <label class="block text-xs font-semibold text-neutral-300 mb-1">Selected Package *</label>
           <select id="selectedPackage" name="package" class="w-full bg-black border border-brand-border rounded-lg px-3 py-2 text-sm text-brand-yellow font-semibold focus:outline-none focus:border-brand-yellow">
             <option value="Custom Auto Parts Finder Form ($500 + $49/mo)">Custom Auto Parts Finder Form ($500 + $49/mo)</option>
-            <option value="Full Small Business Website Lease ($500 + $350/mo)">Full Small Business Website Lease ($500 + $350/mo)</option>
+            <option value="Full Small Business Website Lease ($250 Security Deposit + $149/mo)">Full Small Business Website Lease ($250 Security Deposit + $149/mo)</option>
           </select>
         </div>
         <div>
@@ -523,7 +613,10 @@
           <label class="block text-xs font-semibold text-neutral-300 mb-1">Email Address *</label>
           <input type="email" name="customer_email" required placeholder="owner@yourbusiness.com" class="w-full bg-black border border-brand-border rounded-lg px-3 py-2 text-sm text-neutral-100 focus:outline-none focus:border-brand-yellow" />
         </div>
-        <button type="submit" id="claimSubmitBtn" class="w-full py-3.5 bg-brand-yellow hover:bg-brand-yellowHover text-black font-black rounded-lg text-sm uppercase tracking-wide transition-all shadow-lg">Submit Request</button>
+
+        <button type="submit" id="claimSubmitBtn" class="w-full py-3.5 bg-brand-yellow hover:bg-brand-yellowHover text-black font-black rounded-lg text-sm uppercase tracking-wide transition-all shadow-lg">
+          Submit Request
+        </button>
       </form>
 
       <div id="claimConfirmation" class="hidden mt-4 p-3 bg-black border border-brand-yellow rounded-lg text-xs text-brand-yellow text-center font-semibold">
@@ -535,7 +628,7 @@
   <!-- JAVASCRIPT LOGIC -->
   <script>
     // PASTE YOUR MAKE.COM WEBHOOK URL BELOW:
-    const MAKE_WEBHOOK_URL = 'YOUR_MAKE_WEBHOOK_URL_HERE';
+    const MAKE_WEBHOOK_URL = 'https://hook.us2.make.com/im43dwlniz8jpwva3yb8rr43yqmnk44y';
 
     function switchToTab(tab) {
       const overviewBtn = document.getElementById('tab-overview-btn');
@@ -560,8 +653,11 @@
       const modal = document.getElementById('claimModal');
       const select = document.getElementById('selectedPackage');
       const confirmBox = document.getElementById('claimConfirmation');
+
       confirmBox.classList.add('hidden');
-      if (packageName && select) select.value = packageName;
+      if (packageName && select) {
+        select.value = packageName;
+      }
       modal.classList.remove('hidden');
     }
 
@@ -589,21 +685,23 @@
           <p><strong>1. Agreement to Terms:</strong> By accessing WebsiteRenter.com or subscribing to any digital asset lease or widget service provided by <strong>NATHANIEL ADS LLC</strong>, you agree to be bound by these Terms & Conditions.</p>
           <h4 class="text-white font-bold pt-2">2. Service Tiers & Billing</h4>
           <p><strong>Custom Auto Parts Finder Form:</strong> Requires a $500.00 one-time setup, color-matching, and live sandbox testing fee, followed by a $49.00/month recurring subscription for managed cloud hosting, webhook routing, and updates.</p>
-          <p><strong>Full Small Business Website Lease:</strong> Requires a $500.00 one-time build and configuration fee, followed by a $350.00/month recurring subscription for managed hosting, security, and ongoing content updates.</p>
+          <p><strong>Full Small Business Website Lease:</strong> Requires a $250.00 limited-time security deposit (regularly $500.00) for build and configuration, followed by a $149.00/month recurring lease rent for managed hosting, security, and ongoing content updates.</p>
           <h4 class="text-white font-bold pt-2">3. Remote Hosting & Non-Payment Suspension</h4>
-          <p>All website files, custom code, layouts, and embedded form widgets remain the intellectual property of <strong>NATHANIEL ADS LLC</strong> during the active lease term. Monthly subscriptions renew automatically every 30 days. In the event of a failed or overdue monthly payment beyond a 5-day grace period, NATHANIEL ADS LLC reserves the right to remotely pause or suspend the hosted website or embedded widget until the account balance is brought current.</p>
-          <h4 class="text-white font-bold pt-2">4. Cancellation</h4>
-          <p>Clients may cancel their monthly subscription at any time prior to their next billing date. Upon cancellation, remote hosting and form routing services terminate at the end of the current paid billing cycle. Setup fees are non-refundable once build or sandbox configuration begins.</p>
+          <p>All website files, custom code, layouts, and embedded form widgets remain the intellectual property of <strong>NATHANIEL ADS LLC</strong> during the active lease term. Monthly lease rent renews automatically every 30 days. In the event of a failed or overdue monthly payment beyond a 5-day grace period, NATHANIEL ADS LLC reserves the right to remotely pause or suspend the hosted website or embedded widget until the account balance is brought current.</p>
+          <h4 class="text-white font-bold pt-2">4. Cancellation & Security Deposit</h4>
+          <p>Lessee may cancel their monthly lease at any time prior to their next billing date. Upon cancellation, remote hosting and form routing services terminate at the end of the current paid billing cycle. Security deposits are held against unpaid balances, damage, or unreturned/unsettled lease obligations per the lease agreement.</p>
         `
       },
       lease: {
         title: "Domain & Digital Asset Lease Agreement",
         content: `
           <p>This Domain & Digital Asset Lease Agreement governs the relationship between <strong>NATHANIEL ADS LLC</strong> ("Lessor") and the subscribing business client ("Lessee").</p>
-          <h4 class="text-white font-bold pt-2">1. Client-Registered vs. Company-Registered Domains</h4>
+          <h4 class="text-white font-bold pt-2">1. Security Deposit & Monthly Lease Rent</h4>
+          <p>Under the limited-time offer for the <strong>Full Small Business Website Lease</strong>, Lessee pays a <strong>$250.00 security deposit</strong> (half off the standard $500.00 deposit) and <strong>$149.00/month</strong> in lease rent for ongoing hosting, maintenance, and updates.</p>
+          <h4 class="text-white font-bold pt-2">2. Client-Registered vs. Company-Registered Domains</h4>
           <p><strong>Client-Owned Domains:</strong> Where the Lessee registers their own domain name (e.g., via Hostinger) and points DNS Nameservers or A-Records to Lessor's cloud servers, Lessee retains 100% legal ownership of the domain name at all times, while Lessor retains full ownership of the hosted website architecture and widgets.</p>
           <p><strong>Company Pre-Registered Domains:</strong> Where NATHANIEL ADS LLC pre-registers an exact-match local domain on behalf of Lessee, Lessor retains domain registration control throughout the lease term. Lessee may execute a permanent domain buyout at any time for $199.00 provided the monthly account is in good standing.</p>
-          <h4 class="text-white font-bold pt-2">2. Ongoing Maintenance & Updates</h4>
+          <h4 class="text-white font-bold pt-2">3. Ongoing Maintenance & Updates</h4>
           <p>Active lessees receive unlimited reasonable text, image, service-list, and color-scheme updates to their rented website or embedded widget at no additional hourly cost.</p>
         `
       }
