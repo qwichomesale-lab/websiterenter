@@ -1,397 +1,707 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebsiteRenter.com | High-Converting Websites & Auto Parts Lead Forms</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WebsiteRenter.com — Rent High-Converting Websites for Small Businesses</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              yellow: '#F7EA00',
+              yellowHover: '#E5D800',
+              yellowDim: '#B5AB00',
+              black: '#000000',
+              surface: '#0B0B0B',
+              card: '#121212',
+              border: '#262626',
+            },
+            auto: {
+              red: '#d32f2f',
+              darkRed: '#b71c1c',
+              dark: '#0A0A0A',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #0B0B0B; }
+    ::-webkit-scrollbar-thumb { background: #262626; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #F7EA00; }
+  </style>
 </head>
-<body class="bg-slate-950 text-slate-100 antialiased selection:bg-amber-500 selection:text-slate-950">
+<body class="bg-black text-neutral-100 font-sans antialiased selection:bg-brand-yellow selection:text-black min-h-screen flex flex-col">
 
-    <!-- TOP NAVIGATION -->
-    <header class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <div class="bg-gradient-to-tr from-amber-500 to-amber-300 text-slate-950 font-black px-3 py-2 rounded-lg text-xl tracking-tight shadow-lg shadow-amber-500/20">WR</div>
+  <!-- Top Announcement Bar -->
+  <div class="bg-brand-yellow text-black text-xs sm:text-sm py-2 px-4 text-center font-bold shadow-md">
+    <span class="inline-block bg-black text-brand-yellow px-2 py-0.5 rounded text-[11px] uppercase tracking-wider font-extrabold mr-2">Now Leasing</span>
+    Turnkey Small Business Websites & Auto Shop Parts Intake Widgets — Zero Upfront Tech Headaches!
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="border-b border-brand-border bg-black/95 backdrop-blur-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-8">
+      <div class="flex items-center space-x-3 shrink-0 mr-4 lg:mr-12">
+        <div class="w-10 h-10 rounded-xl bg-brand-yellow flex items-center justify-center shadow-lg shadow-brand-yellow/20 border border-black">
+          <i class="fa-solid fa-laptop-code text-black text-lg"></i>
+        </div>
+        <span class="text-xl font-black tracking-tight text-white">Website<span class="text-brand-yellow">Renter</span><span class="text-xs font-mono text-neutral-400 font-normal ml-1">.com</span></span>
+      </div>
+
+      <nav class="hidden md:flex items-center space-x-10 text-sm font-medium text-neutral-300 flex-1 justify-center">
+        <a href="#demo-preview-container" class="hover:text-brand-yellow transition-colors">How It Works</a>
+        <a href="#auto-shop-spotlight" class="hover:text-brand-yellow transition-colors">Auto Shop Parts Form</a>
+        <a href="#pricing" class="hover:text-brand-yellow transition-colors">Pricing & Plans</a>
+      </nav>
+
+      <div class="flex items-center space-x-3 shrink-0">
+        <button onclick="openModal('Full Small Business Website Lease ($500 + $350/mo)')" class="hidden sm:inline-flex items-center justify-center px-4 py-2 rounded-lg text-sm font-semibold text-neutral-200 border border-brand-border hover:border-brand-yellow hover:text-brand-yellow transition-all">
+          <i class="fa-solid fa-magnifying-glass mr-2 text-brand-yellow"></i> Check Domain
+        </button>
+        <button onclick="openModal('Full Small Business Website Lease ($500 + $350/mo)')" class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg text-sm font-extrabold text-black bg-brand-yellow hover:bg-brand-yellowHover shadow-lg shadow-brand-yellow/20 transition-all scale-100 active:scale-95">
+          Rent Your Site
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="relative pt-12 pb-20 md:pt-16 md:pb-24 overflow-hidden bg-black">
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-brand-yellow/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="flex justify-center mb-6">
+        <div class="inline-flex items-center space-x-2 bg-brand-card border border-brand-border px-4 py-1.5 rounded-full text-xs sm:text-sm text-neutral-300">
+          <span class="w-2 h-2 rounded-full bg-brand-yellow animate-pulse"></span>
+          <span class="font-semibold text-neutral-200">Built for Local Small Businesses, Contractors, Shops & Service Pros</span>
+        </div>
+      </div>
+
+      <div class="text-center max-w-4xl mx-auto mb-10">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-white leading-tight mb-6">
+          Stop Using Just A Website. <br class="hidden sm:block"/>
+          <span class="text-brand-yellow">Start Renting Turnkey Digital Assets.</span>
+        </h1>
+        <p class="text-lg sm:text-xl text-neutral-400 max-w-2xl mx-auto font-normal leading-relaxed">
+          Whether you run a local contracting business, salon, restaurant, medical office, or auto repair shop—we build, host, optimize for Google, and manage your complete web presence for a predictable monthly lease.
+        </p>
+
+        <div class="mt-8 flex flex-col sm:flex-row justify-center items-center gap-4">
+          <button onclick="openModal('Full Small Business Website Lease ($500 + $350/mo)')" class="w-full sm:w-auto px-8 py-4 rounded-xl text-base font-extrabold text-black bg-brand-yellow hover:bg-brand-yellowHover shadow-xl shadow-brand-yellow/20 transition-all transform hover:-translate-y-0.5 active:translate-y-0">
+            <i class="fa-solid fa-key mr-2"></i> Claim Your Small Business Site
+          </button>
+          <a href="#demo-preview-container" onclick="switchToTab('demo')" class="w-full sm:w-auto px-8 py-4 rounded-xl text-base font-semibold text-white bg-brand-card border border-brand-border hover:border-brand-yellow hover:text-brand-yellow transition-all text-center">
+            <i class="fa-solid fa-eye mr-2 text-brand-yellow"></i> Test Live Auto Parts Form Demo
+          </a>
+        </div>
+
+        <div class="mt-10 flex flex-wrap justify-center items-center gap-3 text-xs font-semibold text-neutral-300">
+          <span class="bg-brand-card px-3 py-1.5 rounded-lg border border-brand-border"><i class="fa-solid fa-wrench text-brand-yellow mr-1.5"></i> Auto Shops</span>
+          <span class="bg-brand-card px-3 py-1.5 rounded-lg border border-brand-border"><i class="fa-solid fa-hammer text-brand-yellow mr-1.5"></i> Contractors & HVAC</span>
+          <span class="bg-brand-card px-3 py-1.5 rounded-lg border border-brand-border"><i class="fa-solid fa-scissors text-brand-yellow mr-1.5"></i> Salons & Barbers</span>
+          <span class="bg-brand-card px-3 py-1.5 rounded-lg border border-brand-border"><i class="fa-solid fa-utensils text-brand-yellow mr-1.5"></i> Restaurants & Retail</span>
+          <span class="bg-brand-card px-3 py-1.5 rounded-lg border border-brand-border"><i class="fa-solid fa-briefcase text-brand-yellow mr-1.5"></i> Local Services</span>
+        </div>
+      </div>
+
+      <!-- INTERACTIVE PREVIEW TOGGLE CONTAINER -->
+      <div id="demo-preview-container" class="mt-12 bg-brand-card border border-brand-border rounded-2xl shadow-2xl overflow-hidden">
+        <div class="bg-brand-surface p-4 border-b border-brand-border flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="flex items-center space-x-2">
+            <div class="w-3 h-3 rounded-full bg-neutral-700"></div>
+            <div class="w-3 h-3 rounded-full bg-neutral-700"></div>
+            <div class="w-3 h-3 rounded-full bg-brand-yellow"></div>
+            <span class="text-xs font-mono text-neutral-500 ml-2 hidden sm:inline-block">https://websiterenter.com/interactive-preview</span>
+          </div>
+
+          <div class="bg-black p-1 rounded-xl border border-brand-border flex items-center space-x-1 w-full sm:w-auto">
+            <button id="tab-overview-btn" onclick="switchToTab('overview')" class="flex-1 sm:flex-none px-5 py-2 rounded-lg text-xs sm:text-sm font-extrabold transition-all duration-200 bg-brand-yellow text-black shadow-md">
+              <i class="fa-solid fa-store mr-2"></i> Small Business Overview
+            </button>
+            <button id="tab-demo-btn" onclick="switchToTab('demo')" class="flex-1 sm:flex-none px-5 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 text-neutral-400 hover:text-white hover:bg-neutral-900">
+              <i class="fa-solid fa-wrench mr-2 text-brand-yellow"></i> Live Auto Parts Form Demo
+            </button>
+          </div>
+        </div>
+
+        <!-- TAB CONTENT 1: OVERVIEW -->
+        <div id="tab-overview-content" class="p-6 md:p-10 space-y-8 bg-black">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-brand-card border border-brand-border rounded-xl p-6 hover:border-brand-yellow/60 transition-all">
+              <div class="w-12 h-12 rounded-lg bg-brand-yellow text-black flex items-center justify-center mb-4 text-lg font-black">01</div>
+              <h3 class="text-lg font-bold text-white mb-2">Turnkey Domain & Build</h3>
+              <p class="text-sm text-neutral-400 leading-relaxed">
+                Whether we pre-register an exact-match local domain for your business or connect your existing domain, we build a fast, mobile-ready storefront engineered to convert local visitors into paying calls.
+              </p>
+            </div>
+
+            <div class="bg-brand-card border border-brand-border rounded-xl p-6 hover:border-brand-yellow/60 transition-all">
+              <div class="w-12 h-12 rounded-lg bg-brand-yellow text-black flex items-center justify-center mb-4 text-lg font-black">02</div>
+              <h3 class="text-lg font-bold text-white mb-2">100% Managed Hosting & Updates</h3>
+              <p class="text-sm text-neutral-400 leading-relaxed">
+                Never pay hourly developer rates again. Hosting, SSL security, speed optimization, and unlimited text, photo, or service updates are completely handled under your monthly lease.
+              </p>
+            </div>
+
+            <div class="bg-brand-card border border-brand-border rounded-xl p-6 hover:border-brand-yellow/60 transition-all">
+              <div class="w-12 h-12 rounded-lg bg-brand-yellow text-black flex items-center justify-center mb-4 text-lg font-black">03</div>
+              <h3 class="text-lg font-bold text-white mb-2">Industry-Specific Lead Widgets</h3>
+              <p class="text-sm text-neutral-400 leading-relaxed">
+                Every rented site includes smart intake forms that text or email leads straight to your cell phone—including specialized tools like our 3-step Auto Parts Finder for repair shops.
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-brand-card border border-brand-yellow/40 rounded-xl p-6 md:p-8">
+            <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+              <div class="space-y-4 max-w-3xl">
+                <div class="inline-block bg-brand-yellow text-black text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">
+                  The Economics of Website Renting — Fast Monthly ROI
+                </div>
+                <h4 class="text-2xl font-black text-white">Predictable Monthly Overhead That Pays For Itself</h4>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
+                  <div class="bg-black border border-brand-border rounded-lg p-4">
+                    <div class="text-xs font-bold text-brand-yellow uppercase mb-1">Full Small Business Website ($350/mo)</div>
+                    <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed">
+                      Traditional agencies charge $4,000+ upfront. With WebsiteRenter ($500 setup + $350/mo), <strong class="text-brand-yellow font-extrabold">at an average sale ticket of $50.00, just 7 sales pays for the entire monthly website lease.</strong>
+                    </p>
+                  </div>
+                  <div class="bg-black border border-brand-border rounded-lg p-4">
+                    <div class="text-xs font-bold text-brand-yellow uppercase mb-1">Auto Parts Finder Form Only ($49/mo)</div>
+                    <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed">
+                      Already have a shop website? At $500 setup + $49/mo, <strong class="text-brand-yellow font-extrabold">1 single small job—like a basic oil change, wiper replacement, or minor part order—</strong>pays for the entire month.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <button onclick="switchToTab('demo')" class="w-full lg:w-auto whitespace-nowrap px-6 py-3.5 rounded-xl text-sm font-extrabold text-black bg-brand-yellow hover:bg-brand-yellowHover transition-all shadow-lg shadow-brand-yellow/10">
+                Test Live Parts Form Demo <i class="fa-solid fa-arrow-right ml-2"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB CONTENT 2: LIVE AUTO SHOP DEMO PREVIEW -->
+        <div id="tab-demo-content" class="hidden">
+          <div class="bg-neutral-900 px-4 py-2.5 border-b border-brand-border flex items-center justify-between text-xs text-neutral-400">
+            <div class="flex items-center space-x-2">
+              <i class="fa-solid fa-lock text-brand-yellow"></i>
+              <span class="font-mono text-neutral-200">https://YourAutoShopWebsite.com/parts-request</span>
+              <span class="bg-brand-yellow/20 text-brand-yellow text-[10px] font-bold px-2 py-0.5 rounded">Live Widget Preview</span>
+            </div>
+            <span class="text-neutral-400 hidden sm:inline"><i class="fa-solid fa-bolt text-brand-yellow mr-1"></i> Powered by WebsiteRenter.com</span>
+          </div>
+
+          <div class="bg-black text-neutral-100 max-h-[820px] overflow-y-auto">
+            <div class="bg-brand-surface border-b border-brand-border py-4 px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+              <div class="flex items-center space-x-3">
+                <div class="w-9 h-9 rounded bg-auto-red flex items-center justify-center text-white font-black">
+                  <i class="fa-solid fa-car-wrench"></i>
+                </div>
                 <div>
-                    <span class="text-xl font-bold tracking-tight text-white">Website<span class="text-amber-400">Renter</span></span>
-                    <span class="block text-xs text-slate-400 font-medium tracking-widest uppercase">Auto Parts Lead Systems</span>
+                  <div class="font-black text-lg tracking-tight text-white uppercase">Sample Auto Repair Shop</div>
+                  <div class="text-xs text-neutral-400">Brand Color Matched to Your Shop • Instant SMS/Email Alerts</div>
                 </div>
+              </div>
+              <div class="flex items-center space-x-4">
+                <button onclick="openModal('Custom Auto Parts Finder Form ($500 + $49/mo)')" class="bg-brand-yellow hover:bg-brand-yellowHover text-black font-extrabold px-4 py-2 rounded text-xs uppercase tracking-wider transition-colors">
+                  Claim This Form For Your Shop
+                </button>
+              </div>
             </div>
-            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
-                <a href="#benefits" class="hover:text-amber-400 transition-colors">Why WebsiteRenter</a>
-                <a href="#widget" class="hover:text-amber-400 transition-colors">Live Parts Form</a>
-                <a href="#pricing" class="hover:text-amber-400 transition-colors">Pricing</a>
-            </nav>
-            <div>
-                <a href="#widget" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-semibold px-5 py-2.5 rounded-xl text-sm transition-all shadow-lg shadow-amber-500/20">Test Live Form</a>
-            </div>
-        </div>
-    </header>
 
-    <!-- HERO SECTION -->
-    <section class="relative overflow-hidden py-20 lg:py-24 border-b border-slate-900">
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(245,158,11,0.15),rgba(255,255,255,0))]"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-            <div class="inline-flex items-center space-x-2 bg-amber-500/10 border border-amber-500/20 px-4 py-1.5 rounded-full text-amber-400 text-xs font-semibold uppercase tracking-wider mb-6">
-                <span>Built for Auto Parts Shops, Salvage Yards & Repair Centers</span>
+            <div id="demo-parts-form" class="py-10 px-4 sm:px-6 bg-black">
+              <div class="max-w-2xl mx-auto bg-brand-card border border-brand-border rounded-2xl p-6 sm:p-8 shadow-2xl relative">
+                <div class="absolute -top-3 right-6 bg-brand-yellow text-black text-[10px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full shadow">
+                  <i class="fa-solid fa-code mr-1"></i> 1-Line Embed Widget
+                </div>
+
+                <div class="border-b border-brand-border pb-4 mb-6">
+                  <h3 class="text-xl font-extrabold text-white flex items-center">
+                    <i class="fa-solid fa-gears text-auto-red mr-2"></i> Request Auto Parts
+                  </h3>
+                  <p class="text-xs text-neutral-400 mt-1">Submit a parts inquiry below—vehicle specs, photo, and fulfillment choice route instantly to the shop's email and phone.</p>
+                </div>
+
+                <form id="demoPartsForm" enctype="multipart/form-data" onsubmit="handleDemoSubmit(event)">
+                  <div class="text-xs font-bold text-auto-red uppercase tracking-wider mb-3">1. Vehicle Details</div>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                    <div>
+                      <label class="block text-xs font-medium text-neutral-300 mb-1">Year *</label>
+                      <input type="number" id="demoYear" name="year" min="1950" max="2027" required placeholder="e.g. 2018" class="w-full bg-black border border-brand-border rounded-lg px-3 py-2 text-sm text-neutral-100 focus:outline-none focus:border-brand-yellow transition-colors" />
+                    </div>
+                    <div>
+                      <label class="block text-xs font-medium text-neutral-300 mb-1">Make *</label>
+                      <input type="text" id="demoMake" name="make" required placeholder="e.g. Ford, Toyota" class="w-full bg-black border border-brand-border rounded-lg px-3 py-2 text-sm text-neutral-100 focus:outline-none focus:border-brand-yellow transition-colors" />
+                    </div>
+                    <div>
+                      <label class="block text-xs font-medium text-neutral-300 mb-1">Model *</label>
+                      <input type="text" id="demoModel" name="model" required placeholder="e.g. F-150, Camry" class="w-full bg-black border border-brand-border rounded-lg px-3 py-2 text-sm text-neutral-100 focus:outline-none focus:border-brand-yellow transition-colors" />
+                    </div>
+                    <div>
+                      <label class="block text-xs font-medium text-neutral-300 mb-1">Engine / Trim (Optional)</label>
+                      <input type="text" id="demoTrim" name="trim" placeholder="e.g. 3.5L V6 EcoBoost" class="w-full bg-black border border-brand-border rounded-lg px-3 py-2 text-sm text-neutral-100 focus:outline-none focus:border-brand-yellow transition-colors" />
+                    </div>
+                    <div class="sm:col-span-2">
+                      <label class="block text-xs font-medium text-neutral-300 mb-1">VIN Number (17 Digits - Highly Recommended)</label>
+                      <input type="text" id="demoVin" name="vin" maxlength="17" placeholder="e.g. 1FA6P8CF0H5123456" class="w-full bg-black border border-brand-border rounded-lg px-3 py-2 text-sm text-neutral-100 font-mono focus:outline-none focus:border-brand-yellow transition-colors" />
+                    </div>
+                  </div>
+
+                  <div class="text-xs font-bold text-auto-red uppercase tracking-wider mb-3">2. Part Details & Photo</div>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                    <div>
+                      <label class="block text-xs font-medium text-neutral-300 mb-1">Category *</label>
+                      <select id="demoCategory" name="category" required class="w-full bg-black border border-brand-border rounded-lg px-3 py-2 text-sm text-neutral-100 focus:outline-none focus:border-brand-yellow transition-colors">
+                        <option value="" disabled selected>Select category...</option>
+                        <option value="Engine & Drivetrain">Engine & Drivetrain</option>
+                        <option value="Brakes & Traction">Brakes & Traction</option>
+                        <option value="Suspension & Steering">Suspension & Steering</option>
+                        <option value="Electrical & Lighting">Electrical & Lighting</option>
+                        <option value="Heating & Air Conditioning">Heating & Air Conditioning</option>
+                        <option value="Body & Exterior">Body & Exterior</option>
+                        <option value="Other">Other / Not Sure</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label class="block text-xs font-medium text-neutral-300 mb-1">Part Number (If known)</label>
+                      <input type="text" id="demoPartNum" name="part_number" placeholder="e.g. OEM or Brand #" class="w-full bg-black border border-brand-border rounded-lg px-3 py-2 text-sm text-neutral-100 focus:outline-none focus:border-brand-yellow transition-colors" />
+                    </div>
+                    <div class="sm:col-span-2">
+                      <label class="block text-xs font-medium text-neutral-300 mb-1">Description of Needed Part *</label>
+                      <textarea id="demoDesc" name="part_description" required rows="2" placeholder="Describe the part or problem in detail..." class="w-full bg-black border border-brand-border rounded-lg px-3 py-2 text-sm text-neutral-100 focus:outline-none focus:border-brand-yellow transition-colors"></textarea>
+                    </div>
+                    <div class="sm:col-span-2">
+                      <label class="block text-xs font-medium text-neutral-300 mb-1">Upload Photo of Part or Damage (Optional)</label>
+                      <input type="file" id="demoPhoto" name="part_photo" accept="image/*" class="w-full bg-black border border-brand-border rounded-lg px-3 py-2 text-xs text-neutral-300 file:mr-3 file:py-1.5 file:px-3 file:rounded file:border-0 file:text-xs file:font-bold file:bg-brand-yellow file:text-black hover:file:bg-brand-yellowHover cursor-pointer" />
+                    </div>
+                  </div>
+
+                  <div class="text-xs font-bold text-auto-red uppercase tracking-wider mb-3">3. Contact & Fulfillment</div>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                    <div>
+                      <label class="block text-xs font-medium text-neutral-300 mb-1">Full Name *</label>
+                      <input type="text" id="demoName" name="customer_name" required placeholder="John Doe" class="w-full bg-black border border-brand-border rounded-lg px-3 py-2 text-sm text-neutral-100 focus:outline-none focus:border-brand-yellow transition-colors" />
+                    </div>
+                    <div>
+                      <label class="block text-xs font-medium text-neutral-300 mb-1">Phone Number *</label>
+                      <input type="tel" id="demoPhone" name="customer_phone" required placeholder="(555) 000-0000" class="w-full bg-black border border-brand-border rounded-lg px-3 py-2 text-sm text-neutral-100 focus:outline-none focus:border-brand-yellow transition-colors" />
+                    </div>
+                    <div class="sm:col-span-2">
+                      <label class="block text-xs font-medium text-neutral-300 mb-1">Email Address (Optional)</label>
+                      <input type="email" id="demoEmail" name="customer_email" placeholder="customer@example.com" class="w-full bg-black border border-brand-border rounded-lg px-3 py-2 text-sm text-neutral-100 focus:outline-none focus:border-brand-yellow transition-colors" />
+                    </div>
+                  </div>
+
+                  <div class="mb-6">
+                    <label class="block text-xs font-medium text-neutral-300 mb-2">Preferred Fulfillment Option *</label>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <label class="flex items-center space-x-2.5 p-3 bg-black border border-brand-yellow/60 rounded-lg cursor-pointer hover:border-brand-yellow transition-colors">
+                        <input type="radio" name="fulfillment" value="Request a Call / Quote" checked class="text-brand-yellow focus:ring-brand-yellow" />
+                        <div>
+                          <div class="text-xs font-bold text-white">Request a Call / Quote</div>
+                          <div class="text-[11px] text-neutral-400">Shop calls back with price & availability</div>
+                        </div>
+                      </label>
+                      <label class="flex items-center space-x-2.5 p-3 bg-black border border-brand-border rounded-lg cursor-pointer hover:border-brand-yellow transition-colors">
+                        <input type="radio" name="fulfillment" value="Counter Pickup / Core Drop-off" class="text-brand-yellow focus:ring-brand-yellow" />
+                        <div>
+                          <div class="text-xs font-bold text-white">Counter Pickup</div>
+                          <div class="text-[11px] text-neutral-400">Pick up part & drop core at shop</div>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+
+                  <button type="submit" id="demoSubmitBtn" class="w-full py-3 bg-auto-red hover:bg-auto-darkRed text-white font-bold rounded-lg text-sm transition-all shadow-lg">
+                    Submit Parts Inquiry
+                  </button>
+                </form>
+
+                <div id="demoWebhookResponse" class="hidden mt-4 p-4 bg-neutral-950 border border-brand-yellow rounded-lg text-xs text-neutral-200">
+                  <div class="font-bold text-brand-yellow mb-1 flex items-center">
+                    <i class="fa-solid fa-circle-check mr-2"></i> Parts Request Transmitted!
+                  </div>
+                  <p class="text-neutral-300">Your vehicle specs, part photo, and fulfillment request have been routed directly to the shop's inbox and phone.</p>
+                  <pre id="demoJsonOutput" class="mt-2 bg-black p-2.5 rounded border border-brand-border font-mono text-[10px] text-brand-yellow overflow-x-auto"></pre>
+                </div>
+              </div>
             </div>
-            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white max-w-4xl mx-auto leading-tight">
-                Turn Website Visitors Into <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-200">Ready-to-Buy Parts Orders.</span>
-            </h1>
-            <p class="mt-6 text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
-                Capture exact Year, Make, Model, VIN, and part photos automatically—sent straight to your inbox and phone in seconds so you close more quotes before buyers call the shop down the street.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- DEDICATED AUTO SHOP SPOTLIGHT SECTION -->
+  <section id="auto-shop-spotlight" class="py-20 bg-brand-surface border-t border-b border-brand-border relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="bg-black border-2 border-brand-yellow rounded-3xl p-8 md:p-12 shadow-2xl">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-7 space-y-5">
+            <div class="inline-flex items-center space-x-2 bg-brand-yellow text-black px-3.5 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider">
+              <i class="fa-solid fa-car-burst"></i>
+              <span>Auto Repair & Parts Shop Add-On</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-black text-white leading-tight">
+              Own an Auto Shop? Get Your <span class="text-brand-yellow">Custom Auto Parts Finder Form</span> Added to Your Site.
+            </h2>
+            <p class="text-neutral-300 text-sm sm:text-base leading-relaxed">
+              Already have a website for your shop? Stop wasting hours on the phone playing tag with customers who don't know their vehicle specs. We brand-match our 3-step Auto Parts Finder Form to your shop colors, wire it straight to your dedicated shop email or cell phone, test it live, and give you a single line of code to paste on your site.
             </p>
-            <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#widget" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-8 py-4 rounded-xl text-base transition-all shadow-xl shadow-amber-500/20">
-                    Try the Auto Parts Finder Below
-                </a>
-                <a href="#pricing" class="bg-slate-900 hover:bg-slate-800 text-slate-200 font-semibold px-8 py-4 rounded-xl text-base border border-slate-800 transition-all">
-                    See Simple Pricing
-                </a>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs sm:text-sm text-neutral-200">
+              <div class="flex items-center space-x-2.5"><i class="fa-solid fa-check-circle text-brand-yellow"></i><span>Captures Year, Make, Model & 17-Digit VIN</span></div>
+              <div class="flex items-center space-x-2.5"><i class="fa-solid fa-check-circle text-brand-yellow"></i><span>Part Photo Upload + Call / Counter Pickup</span></div>
+              <div class="flex items-center space-x-2.5"><i class="fa-solid fa-check-circle text-brand-yellow"></i><span>Routes Direct to Your Cell Phone or Email</span></div>
+              <div class="flex items-center space-x-2.5"><i class="fa-solid fa-check-circle text-brand-yellow"></i><span>Zero Passwords Needed — 1-Line Paste</span></div>
             </div>
+          </div>
+
+          <div class="lg:col-span-5 bg-brand-card border border-brand-border rounded-2xl p-6 sm:p-8 flex flex-col justify-between">
+            <div>
+              <div class="text-xs font-bold uppercase tracking-wider text-brand-yellow mb-1">Complete Turnkey Form Setup</div>
+              <div class="flex items-baseline space-x-2 my-3">
+                <span class="text-4xl sm:text-5xl font-black text-white">$500</span>
+                <span class="text-neutral-400 text-sm font-medium">one-time setup & live testing</span>
+              </div>
+              <div class="inline-block bg-black border border-brand-border rounded-lg px-3 py-1.5 text-xs sm:text-sm text-neutral-200 font-semibold mb-5">
+                + <span class="text-brand-yellow font-extrabold">$49/month</span> managed hosting & updates
+              </div>
+              <p class="text-xs text-neutral-400 leading-relaxed mb-6">
+                Includes full brand color matching, live sandbox verification before going public, instant lead routing, and ongoing updates whenever you need changes.
+              </p>
+            </div>
+            <div class="space-y-3">
+              <button onclick="openModal('Custom Auto Parts Finder Form ($500 + $49/mo)')" class="w-full py-4 px-6 rounded-xl bg-brand-yellow hover:bg-brand-yellowHover text-black font-black text-sm sm:text-base uppercase tracking-wide transition-all shadow-lg shadow-brand-yellow/20">
+                <i class="fa-solid fa-bolt mr-2"></i> Claim Your Auto Parts Form
+              </button>
+              <a href="#demo-preview-container" onclick="switchToTab('demo')" class="block w-full py-2.5 text-center rounded-xl border border-brand-border hover:border-brand-yellow text-xs font-semibold text-neutral-300 hover:text-brand-yellow transition-colors">
+                Test Live Form Demo Above
+              </a>
+            </div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- VALUE PROPOSITIONS -->
-    <section id="benefits" class="py-16 border-b border-slate-900 bg-slate-950">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6">
-                    <div class="text-amber-400 font-bold text-lg mb-2">1. Zero Back-and-Forth Guessing</div>
-                    <p class="text-sm text-slate-400 leading-relaxed">Buyers submit their Year, Make, Model, 17-digit VIN, and a photo of the damaged part upfront—saving your counter team 10 minutes per call.</p>
-                </div>
-                <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6">
-                    <div class="text-amber-400 font-bold text-lg mb-2">2. Instant Email & Text Alerts</div>
-                    <p class="text-sm text-slate-400 leading-relaxed">Every quote request routes immediately to your email and mobile device with the part photo front and center so you can call back fast.</p>
-                </div>
-                <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6">
-                    <div class="text-amber-400 font-bold text-lg mb-2">3. Plug-and-Play Deployment</div>
-                    <p class="text-sm text-slate-400 leading-relaxed">Embed the Auto Parts Finder directly onto your existing site, or launch a complete high-converting shop website ready to capture local traffic.</p>
-                </div>
+  <!-- PRICING SECTION -->
+  <section id="pricing" class="py-20 bg-black">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-3xl font-black text-white sm:text-4xl">Simple, Transparent Pricing</h2>
+        <p class="text-neutral-400 mt-3 text-sm sm:text-base">Choose the standalone Auto Parts Finder Form for your existing shop site, or lease a complete small business website.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div class="bg-brand-card border border-brand-border rounded-2xl p-8 flex flex-col justify-between hover:border-brand-yellow/50 transition-all">
+          <div>
+            <div class="text-xs font-bold uppercase tracking-wider text-brand-yellow mb-2">For Existing Auto Shop Sites</div>
+            <h3 class="text-2xl font-bold text-white mb-3">Custom Auto Parts Finder Form</h3>
+            <p class="text-xs text-neutral-400 mb-6">Add our 3-step VIN & parts request widget directly to your current website without changing hosts.</p>
+            <div class="mb-6 pb-6 border-b border-brand-border">
+              <span class="text-4xl font-black text-white">$500</span>
+              <span class="text-neutral-400 text-sm"> one-time setup & test run</span>
+              <span class="text-brand-yellow font-bold text-sm block mt-1">+ $49/month managed hosting & updates</span>
             </div>
+            <ul class="space-y-3 text-xs sm:text-sm text-neutral-300 mb-8">
+              <li class="flex items-center"><i class="fa-solid fa-check text-brand-yellow mr-2.5"></i> Custom matched to your shop's brand colors</li>
+              <li class="flex items-center"><i class="fa-solid fa-check text-brand-yellow mr-2.5"></i> Year, Make, Model & 17-Digit VIN intake</li>
+              <li class="flex items-center"><i class="fa-solid fa-check text-brand-yellow mr-2.5"></i> Direct routing to your dedicated email or cell</li>
+              <li class="flex items-center"><i class="fa-solid fa-check text-brand-yellow mr-2.5"></i> Live pre-launch test run verified with you</li>
+              <li class="flex items-center"><i class="fa-solid fa-check text-brand-yellow mr-2.5"></i> 1 single job covers the $49/mo subscription</li>
+            </ul>
+          </div>
+          <button onclick="openModal('Custom Auto Parts Finder Form ($500 + $49/mo)')" class="w-full py-3.5 rounded-xl border-2 border-brand-yellow text-brand-yellow hover:bg-brand-yellow hover:text-black font-extrabold text-sm transition-all">
+            Claim Your Auto Parts Form ($500 + $49/mo)
+          </button>
         </div>
-    </section>
 
-    <!-- THE AUTO PARTS FINDER EMBEDDED WIDGET -->
-    <section id="widget" class="py-20 bg-slate-900/50">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold tracking-tight text-white">Live Auto Parts Finder Widget</h2>
-                <p class="mt-2 text-slate-400">Test the exact multi-step intake form your customers use to request quotes and counter pickups.</p>
+        <div class="bg-brand-card border-2 border-brand-yellow rounded-2xl p-8 flex flex-col justify-between relative shadow-2xl shadow-brand-yellow/10">
+          <div class="absolute -top-3.5 right-6 bg-brand-yellow text-black text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full">All Small Businesses</div>
+          <div>
+            <div class="text-xs font-bold uppercase tracking-wider text-brand-yellow mb-2">Turnkey Small Business Website</div>
+            <h3 class="text-2xl font-bold text-white mb-3">Full Website Build & Monthly Lease</h3>
+            <p class="text-xs text-neutral-400 mb-6">Complete website design, domain setup, managed cloud hosting, lead capture, and local Google SEO for any small business.</p>
+            <div class="mb-6 pb-6 border-b border-brand-border">
+              <span class="text-4xl font-black text-white">$500</span>
+              <span class="text-neutral-400 text-sm"> one-time build & setup</span>
+              <span class="text-brand-yellow font-bold text-sm block mt-1">+ $350/month full site management</span>
             </div>
-
-            <!-- WIDGET CONTAINER -->
-            <div class="bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl p-6 sm:p-10">
-                <div id="form-container">
-                    <!-- Progress Bar -->
-                    <div class="mb-8">
-                        <div class="flex justify-between text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
-                            <span id="step-label-1" class="text-amber-400">1. Vehicle Info</span>
-                            <span id="step-label-2">2. Part Specs & Photo</span>
-                            <span id="step-label-3">3. Contact & Fulfillment</span>
-                        </div>
-                        <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
-                            <div id="progress-bar" class="bg-amber-500 h-full w-1/3 transition-all duration-300"></div>
-                        </div>
-                    </div>
-
-                    <form id="partsForm" enctype="multipart/form-data" class="space-y-6">
-                        <!-- STEP 1: VEHICLE INFORMATION -->
-                        <div id="step-1" class="space-y-5">
-                            <h3 class="text-xl font-semibold text-white flex items-center space-x-2">
-                                <span class="bg-amber-500 text-slate-950 w-7 h-7 rounded-full inline-flex items-center justify-center text-sm font-bold">1</span>
-                                <span>Vehicle Identification</span>
-                            </h3>
-                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                                <div>
-                                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Year *</label>
-                                    <input type="text" id="vehYear" name="year" required placeholder="e.g. 2020" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition-colors">
-                                </div>
-                                <div>
-                                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Make *</label>
-                                    <input type="text" id="vehMake" name="make" required placeholder="e.g. Ford" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition-colors">
-                                </div>
-                                <div>
-                                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Model *</label>
-                                    <input type="text" id="vehModel" name="model" required placeholder="e.g. F-150" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition-colors">
-                                </div>
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">VIN (Optional - 17 Chars)</label>
-                                <input type="text" id="vehVin" name="vin" maxlength="17" placeholder="e.g. 1FTEW1E59LFA00001" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white font-mono uppercase tracking-widest text-sm focus:outline-none focus:border-amber-500 transition-colors">
-                            </div>
-                            <div class="flex justify-end pt-4">
-                                <button type="button" onclick="nextStep(2)" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-6 py-3 rounded-xl transition-all shadow-lg shadow-amber-500/20">
-                                    Next: Part Details →
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- STEP 2: PART SPECIFICATIONS -->
-                        <div id="step-2" class="space-y-5 hidden">
-                            <h3 class="text-xl font-semibold text-white flex items-center space-x-2">
-                                <span class="bg-amber-500 text-slate-950 w-7 h-7 rounded-full inline-flex items-center justify-center text-sm font-bold">2</span>
-                                <span>Part Specifications & Photo</span>
-                            </h3>
-                            <div>
-                                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Part Category *</label>
-                                <select id="partCategory" name="category" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition-colors">
-                                    <option value="Engine & Drivetrain">Engine & Drivetrain</option>
-                                    <option value="Transmission & Clutch">Transmission & Clutch</option>
-                                    <option value="Brakes & Suspension">Brakes & Suspension</option>
-                                    <option value="Electrical & Sensors">Electrical & Sensors</option>
-                                    <option value="Body & Exterior Trim">Body & Exterior Trim</option>
-                                    <option value="Other / Hard-to-Find">Other / Hard-to-Find</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Part Description / Part Number *</label>
-                                <textarea id="partDesc" name="part_description" rows="3" required placeholder="Describe the exact part, side (left/right), or OEM part number needed..." class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition-colors"></textarea>
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Upload Photo of Part or Damage (Optional)</label>
-                                <input type="file" id="partPhoto" name="part_photo" accept="image/*" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-slate-400 text-sm file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-amber-500 file:text-slate-950 hover:file:bg-amber-400 cursor-pointer">
-                            </div>
-                            <div class="flex justify-between pt-4">
-                                <button type="button" onclick="prevStep(1)" class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold px-6 py-3 rounded-xl transition-all">
-                                    ← Back
-                                </button>
-                                <button type="button" onclick="nextStep(3)" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-6 py-3 rounded-xl transition-all shadow-lg shadow-amber-500/20">
-                                    Next: Contact & Fulfillment →
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- STEP 3: CONTACT & FULFILLMENT -->
-                        <div id="step-3" class="space-y-5 hidden">
-                            <h3 class="text-xl font-semibold text-white flex items-center space-x-2">
-                                <span class="bg-amber-500 text-slate-950 w-7 h-7 rounded-full inline-flex items-center justify-center text-sm font-bold">3</span>
-                                <span>Contact & Fulfillment Options</span>
-                            </h3>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Full Name *</label>
-                                    <input type="text" id="custName" name="customer_name" required placeholder="John Doe" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition-colors">
-                                </div>
-                                <div>
-                                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Phone Number *</label>
-                                    <input type="tel" id="custPhone" name="customer_phone" required placeholder="(419) 555-0199" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition-colors">
-                                </div>
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Email Address *</label>
-                                <input type="email" id="custEmail" name="customer_email" required placeholder="buyer@example.com" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 transition-colors">
-                            </div>
-
-                            <!-- FULFILLMENT SELECTION (REQUEST A CALL / COUNTER PICKUP ONLY) -->
-                            <div>
-                                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Preferred Fulfillment Method *</label>
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                    <label class="flex items-center space-x-3 p-4 bg-slate-950 border border-amber-500/50 rounded-xl cursor-pointer hover:border-amber-400 transition-all">
-                                        <input type="radio" name="fulfillment" value="Request a Call / Quote" checked class="text-amber-500 focus:ring-amber-500 h-4 w-4">
-                                        <div>
-                                            <span class="block text-sm font-semibold text-white">Request a Call / Quote</span>
-                                            <span class="block text-xs text-slate-400">Shop calls back with price & availability</span>
-                                        </div>
-                                    </label>
-                                    <label class="flex items-center space-x-3 p-4 bg-slate-950 border border-slate-800 rounded-xl cursor-pointer hover:border-amber-400 transition-all">
-                                        <input type="radio" name="fulfillment" value="Counter Pickup / Core Drop-off" class="text-amber-500 focus:ring-amber-500 h-4 w-4">
-                                        <div>
-                                            <span class="block text-sm font-semibold text-white">Counter Pickup</span>
-                                            <span class="block text-xs text-slate-400">Pick up part & drop core at shop</span>
-                                        </div>
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div class="flex justify-between pt-4">
-                                <button type="button" onclick="prevStep(2)" class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold px-6 py-3 rounded-xl transition-all">
-                                    ← Back
-                                </button>
-                                <button type="submit" id="submitBtn" class="bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-slate-950 font-bold px-8 py-3 rounded-xl transition-all shadow-xl shadow-amber-500/20">
-                                    Submit Parts Request →
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- SUCCESS STATE -->
-                <div id="success-state" class="hidden text-center py-12 space-y-4">
-                    <div class="w-16 h-16 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto text-2xl">✓</div>
-                    <h3 class="text-2xl font-bold text-white">Request Successfully Transmitted!</h3>
-                    <p class="text-slate-400 max-w-md mx-auto text-sm">Your vehicle specifications and part request have been securely routed to the shop team. Reference ID: <span id="refId" class="font-mono text-amber-400 font-bold">#PRT-8492</span></p>
-                    <button onclick="resetForm()" class="mt-6 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold px-6 py-2.5 rounded-xl text-sm transition-all">Submit Another Request</button>
-                </div>
-            </div>
+            <ul class="space-y-3 text-xs sm:text-sm text-neutral-200 mb-8">
+              <li class="flex items-center"><i class="fa-solid fa-check text-brand-yellow mr-2.5"></i> Custom-built high-converting website for your niche</li>
+              <li class="flex items-center"><i class="fa-solid fa-check text-brand-yellow mr-2.5"></i> Domain registration / DNS setup & fast cloud hosting</li>
+              <li class="flex items-center"><i class="fa-solid fa-check text-brand-yellow mr-2.5"></i> Instant SMS/email lead forms (including Parts Form for shops)</li>
+              <li class="flex items-center"><i class="fa-solid fa-check text-brand-yellow mr-2.5"></i> Unlimited content, photo & offer updates included</li>
+              <li class="flex items-center"><i class="fa-solid fa-check text-brand-yellow mr-2.5"></i> At an average sale ticket of $50.00, just 7 sales pays for your entire monthly website lease</li>
+            </ul>
+          </div>
+          <button onclick="openModal('Full Small Business Website Lease ($500 + $350/mo)')" class="w-full py-3.5 rounded-xl bg-brand-yellow hover:bg-brand-yellowHover text-black font-extrabold text-sm transition-all shadow-lg shadow-brand-yellow/20">
+            Rent Your Business Website ($500 + $350/mo)
+          </button>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- PRICING SECTION (EXACT CURRENT OFFERINGS) -->
-    <section id="pricing" class="py-20 border-t border-slate-900">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Simple, Straightforward Pricing</h2>
-                <p class="mt-4 text-slate-400">Add the Auto Parts Finder to your existing site, launch a new shop site, or bundle both.</p>
-            </div>
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <!-- Plan 1: Auto Parts Form -->
-                <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 flex flex-col justify-between">
-                    <div>
-                        <div class="text-xs font-semibold uppercase tracking-wider text-amber-400 mb-2">Lead Capture Widget</div>
-                        <h3 class="text-2xl font-bold text-white">Auto Parts Form</h3>
-                        <div class="mt-4 flex items-baseline text-white">
-                            <span class="text-4xl font-extrabold tracking-tight">$49</span>
-                            <span class="ml-1 text-slate-400 text-sm">/ month</span>
-                        </div>
-                        <ul class="mt-8 space-y-4 text-sm text-slate-300">
-                            <li class="flex items-center"><span class="text-amber-400 mr-2">✓</span> Embeds onto any existing website</li>
-                            <li class="flex items-center"><span class="text-amber-400 mr-2">✓</span> Year / Make / Model / VIN + Photo upload</li>
-                            <li class="flex items-center"><span class="text-amber-400 mr-2">✓</span> Instant Email & SMS Lead Alerts</li>
-                        </ul>
-                    </div>
-                    <a href="#widget" class="mt-8 block text-center bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold py-3 rounded-xl transition-all">Get Started</a>
-                </div>
+  <!-- FOOTER -->
+  <footer class="bg-brand-surface border-t border-brand-border py-12 text-neutral-400 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left">
+        <span class="font-black text-white text-base">Website<span class="text-brand-yellow">Renter</span>.com</span>
+        <span class="text-neutral-500">Operated by <strong class="text-neutral-300">NATHANIEL ADS LLC</strong> • © 2026 All Rights Reserved.</span>
+      </div>
+      <div class="flex flex-wrap justify-center gap-6 font-medium">
+        <button onclick="openLegalModal('privacy')" class="hover:text-brand-yellow transition-colors">Privacy Policy</button>
+        <button onclick="openLegalModal('terms')" class="hover:text-brand-yellow transition-colors">Terms & Conditions</button>
+        <button onclick="openLegalModal('lease')" class="hover:text-brand-yellow transition-colors">Domain & Asset Lease Agreement</button>
+      </div>
+    </div>
+  </footer>
 
-                <!-- Plan 2: Complete Bundle -->
-                <div class="bg-slate-900 border-2 border-amber-500 rounded-3xl p-8 flex flex-col justify-between relative shadow-2xl shadow-amber-500/10">
-                    <div class="absolute -top-3.5 left-1/2 transform -translate-x-1/2 bg-amber-500 text-slate-950 text-xs font-extrabold uppercase px-4 py-1 rounded-full">Best Value</div>
-                    <div>
-                        <div class="text-xs font-semibold uppercase tracking-wider text-amber-400 mb-2">Complete Shop Package</div>
-                        <h3 class="text-2xl font-bold text-white">Website + Parts Form</h3>
-                        <div class="mt-4 flex items-baseline text-white">
-                            <span class="text-4xl font-extrabold tracking-tight">$500</span>
-                            <span class="ml-1 text-slate-400 text-sm">one-time (+ $49/mo form)</span>
-                        </div>
-                        <ul class="mt-8 space-y-4 text-sm text-slate-300">
-                            <li class="flex items-center"><span class="text-amber-400 mr-2">✓</span> Custom High-Converting Shop Website</li>
-                            <li class="flex items-center"><span class="text-amber-400 mr-2">✓</span> Auto Parts Finder Pre-Installed</li>
-                            <li class="flex items-center"><span class="text-amber-400 mr-2">✓</span> Mobile-Ready & Fast Loading</li>
-                            <li class="flex items-center"><span class="text-amber-400 mr-2">✓</span> Priority Webhook & Alert Setup</li>
-                        </ul>
-                    </div>
-                    <a href="#widget" class="mt-8 block text-center bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-3 rounded-xl transition-all shadow-lg shadow-amber-500/20">Claim Complete Bundle</a>
-                </div>
-
-                <!-- Plan 3: Standalone Website -->
-                <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 flex flex-col justify-between">
-                    <div>
-                        <div class="text-xs font-semibold uppercase tracking-wider text-amber-400 mb-2">Web Presence</div>
-                        <h3 class="text-2xl font-bold text-white">Custom Shop Website</h3>
-                        <div class="mt-4 flex items-baseline text-white">
-                            <span class="text-4xl font-extrabold tracking-tight">$350</span>
-                            <span class="ml-1 text-slate-400 text-sm">one-time</span>
-                        </div>
-                        <ul class="mt-8 space-y-4 text-sm text-slate-300">
-                            <li class="flex items-center"><span class="text-amber-400 mr-2">✓</span> Clean, Professional Shop Landing Page</li>
-                            <li class="flex items-center"><span class="text-amber-400 mr-2">✓</span> Click-to-Call & Location Directions</li>
-                            <li class="flex items-center"><span class="text-amber-400 mr-2">✓</span> Upgradeable to Parts Form Anytime</li>
-                        </ul>
-                    </div>
-                    <a href="#widget" class="mt-8 block text-center bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold py-3 rounded-xl transition-all">Launch Website</a>
-                </div>
-            </div>
+  <!-- LEGAL POLICY MODAL -->
+  <div id="legalModal" class="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-brand-card border-2 border-brand-yellow rounded-2xl max-w-2xl w-full p-6 sm:p-8 relative shadow-2xl max-h-[85vh] flex flex-col">
+      <div class="flex items-center justify-between border-b border-brand-border pb-4 mb-4">
+        <div>
+          <span class="text-[10px] font-extrabold uppercase tracking-wider text-brand-yellow">NATHANIEL ADS LLC • Official Policy</span>
+          <h3 id="legalModalTitle" class="text-xl font-black text-white">Terms & Conditions</h3>
         </div>
-    </section>
+        <button onclick="closeLegalModal()" class="text-neutral-400 hover:text-brand-yellow text-xl p-1"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div id="legalModalBody" class="overflow-y-auto pr-2 space-y-4 text-xs sm:text-sm text-neutral-300 leading-relaxed"></div>
+      <div class="border-t border-brand-border pt-4 mt-6 flex justify-end">
+        <button onclick="closeLegalModal()" class="px-6 py-2.5 rounded-lg bg-brand-yellow hover:bg-brand-yellowHover text-black font-extrabold text-xs uppercase tracking-wider">Close Document</button>
+      </div>
+    </div>
+  </div>
 
-    <!-- FOOTER -->
-    <footer class="bg-slate-950 border-t border-slate-900 py-12 text-center text-xs text-slate-500">
-        <p>© 2026 WebsiteRenter.com. All rights reserved.</p>
-    </footer>
+  <!-- CLAIM / ONBOARDING MODAL -->
+  <div id="claimModal" class="fixed inset-0 bg-black/85 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-brand-card border-2 border-brand-yellow rounded-2xl max-w-md w-full p-6 relative shadow-2xl">
+      <button onclick="closeModal()" class="absolute top-4 right-4 text-neutral-400 hover:text-brand-yellow text-lg"><i class="fa-solid fa-xmark"></i></button>
 
-    <!-- JAVASCRIPT FOR MULTI-STEP WIDGET & MAKE.COM WEBHOOK -->
-    <script>
-        // PASTE YOUR MAKE.COM WEBHOOK URL BELOW:
-        const MAKE_WEBHOOK_URL = 'YOUR_MAKE_WEBHOOK_URL_HERE';
+      <div class="text-center mb-6">
+        <div class="w-12 h-12 rounded-xl bg-brand-yellow text-black flex items-center justify-center mx-auto mb-3 text-xl font-black"><i class="fa-solid fa-key"></i></div>
+        <h3 class="text-xl font-black text-white">Get Started With WebsiteRenter</h3>
+        <p class="text-xs text-neutral-400 mt-1">Fill out your business info below and we will reach out to confirm your domain and launch your setup.</p>
+      </div>
 
-        function nextStep(step) {
-            if (step === 2) {
-                const year = document.getElementById('vehYear').value;
-                const make = document.getElementById('vehMake').value;
-                const model = document.getElementById('vehModel').value;
-                if (!year || !make || !model) {
-                    alert('Please fill out the Year, Make, and Model before proceeding.');
-                    return;
-                }
-                document.getElementById('step-1').classList.add('hidden');
-                document.getElementById('step-2').classList.remove('hidden');
-                document.getElementById('progress-bar').style.width = '66%';
-                document.getElementById('step-label-1').classList.remove('text-amber-400');
-                document.getElementById('step-label-2').classList.add('text-amber-400');
-            } else if (step === 3) {
-                const desc = document.getElementById('partDesc').value;
-                if (!desc) {
-                    alert('Please enter a part description or part number.');
-                    return;
-                }
-                document.getElementById('step-2').classList.add('hidden');
-                document.getElementById('step-3').classList.remove('hidden');
-                document.getElementById('progress-bar').style.width = '100%';
-                document.getElementById('step-label-2').classList.remove('text-amber-400');
-                document.getElementById('step-label-3').classList.add('text-amber-400');
-            }
+      <form id="claimForm" onsubmit="handleClaimSubmit(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-neutral-300 mb-1">Selected Package *</label>
+          <select id="selectedPackage" name="package" class="w-full bg-black border border-brand-border rounded-lg px-3 py-2 text-sm text-brand-yellow font-semibold focus:outline-none focus:border-brand-yellow">
+            <option value="Custom Auto Parts Finder Form ($500 + $49/mo)">Custom Auto Parts Finder Form ($500 + $49/mo)</option>
+            <option value="Full Small Business Website Lease ($500 + $350/mo)">Full Small Business Website Lease ($500 + $350/mo)</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-neutral-300 mb-1">Business / Shop Name *</label>
+          <input type="text" name="business_name" required placeholder="e.g. Apex Auto Repair or Smith Plumbing" class="w-full bg-black border border-brand-border rounded-lg px-3 py-2 text-sm text-neutral-100 focus:outline-none focus:border-brand-yellow" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-neutral-300 mb-1">Existing Website or Desired Domain</label>
+          <input type="text" name="domain" placeholder="e.g. www.yourbusiness.com" class="w-full bg-black border border-brand-border rounded-lg px-3 py-2 text-sm text-neutral-100 focus:outline-none focus:border-brand-yellow" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-neutral-300 mb-1">Phone Number (For SMS Alerts & Setup) *</label>
+          <input type="tel" name="customer_phone" required placeholder="(555) 000-0000" class="w-full bg-black border border-brand-border rounded-lg px-3 py-2 text-sm text-neutral-100 focus:outline-none focus:border-brand-yellow" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-neutral-300 mb-1">Email Address *</label>
+          <input type="email" name="customer_email" required placeholder="owner@yourbusiness.com" class="w-full bg-black border border-brand-border rounded-lg px-3 py-2 text-sm text-neutral-100 focus:outline-none focus:border-brand-yellow" />
+        </div>
+        <button type="submit" id="claimSubmitBtn" class="w-full py-3.5 bg-brand-yellow hover:bg-brand-yellowHover text-black font-black rounded-lg text-sm uppercase tracking-wide transition-all shadow-lg">Submit Request</button>
+      </form>
+
+      <div id="claimConfirmation" class="hidden mt-4 p-3 bg-black border border-brand-yellow rounded-lg text-xs text-brand-yellow text-center font-semibold">
+        Request received! We will text and email you shortly to get your setup rolling.
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // PASTE YOUR MAKE.COM WEBHOOK URL BELOW:
+    const MAKE_WEBHOOK_URL = 'YOUR_MAKE_WEBHOOK_URL_HERE';
+
+    function switchToTab(tab) {
+      const overviewBtn = document.getElementById('tab-overview-btn');
+      const demoBtn = document.getElementById('tab-demo-btn');
+      const overviewContent = document.getElementById('tab-overview-content');
+      const demoContent = document.getElementById('tab-demo-content');
+
+      if (tab === 'overview') {
+        overviewBtn.className = "flex-1 sm:flex-none px-5 py-2 rounded-lg text-xs sm:text-sm font-extrabold transition-all duration-200 bg-brand-yellow text-black shadow-md";
+        demoBtn.className = "flex-1 sm:flex-none px-5 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 text-neutral-400 hover:text-white hover:bg-neutral-900";
+        overviewContent.classList.remove('hidden');
+        demoContent.classList.add('hidden');
+      } else {
+        demoBtn.className = "flex-1 sm:flex-none px-5 py-2 rounded-lg text-xs sm:text-sm font-extrabold transition-all duration-200 bg-brand-yellow text-black shadow-md";
+        overviewBtn.className = "flex-1 sm:flex-none px-5 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 text-neutral-400 hover:text-white hover:bg-neutral-900";
+        demoContent.classList.remove('hidden');
+        overviewContent.classList.add('hidden');
+      }
+    }
+
+    function openModal(packageName) {
+      const modal = document.getElementById('claimModal');
+      const select = document.getElementById('selectedPackage');
+      const confirmBox = document.getElementById('claimConfirmation');
+      confirmBox.classList.add('hidden');
+      if (packageName && select) select.value = packageName;
+      modal.classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('claimModal').classList.add('hidden');
+    }
+
+    const legalDocuments = {
+      privacy: {
+        title: "Privacy Policy — WebsiteRenter.com (NATHANIEL ADS LLC)",
+        content: `
+          <p><strong>Effective Date:</strong> January 1, 2026</p>
+          <p><strong>WebsiteRenter.com</strong> is owned and operated by <strong>NATHANIEL ADS LLC</strong> ("Company," "we," "our," or "us"). This Privacy Policy explains how we collect, use, and protect information submitted through WebsiteRenter.com and our hosted client widgets.</p>
+          <h4 class="text-white font-bold pt-2">1. Information We Collect</h4>
+          <p>When you request a website lease, check domain availability, or order an Auto Parts Finder Form, we collect business contact details including your name, shop or business name, email address, phone number, and desired domain name. For end-users submitting inquiries through client-embedded forms, we process vehicle details (Year, Make, Model, VIN) and contact info strictly for routing to the subscribing client.</p>
+          <h4 class="text-white font-bold pt-2">2. How We Use Information</h4>
+          <p>We use collected information solely to provision websites, configure DNS and remote hosting infrastructure, route real-time SMS/email leads to subscribing business owners, process recurring billing, and provide customer support. We never sell or rent personal lead data to third-party brokers.</p>
+          <h4 class="text-white font-bold pt-2">3. Security & Data Retention</h4>
+          <p>All hosted websites and remote form widgets operate over encrypted HTTPS/SSL infrastructure. Client lead logs are retained only as necessary to verify webhook delivery and maintain service quality.</p>
+        `
+      },
+      terms: {
+        title: "Terms & Conditions — WebsiteRenter.com",
+        content: `
+          <p><strong>1. Agreement to Terms:</strong> By accessing WebsiteRenter.com or subscribing to any digital asset lease or widget service provided by <strong>NATHANIEL ADS LLC</strong>, you agree to be bound by these Terms & Conditions.</p>
+          <h4 class="text-white font-bold pt-2">2. Service Tiers & Billing</h4>
+          <p><strong>Custom Auto Parts Finder Form:</strong> Requires a $500.00 one-time setup, color-matching, and live sandbox testing fee, followed by a $49.00/month recurring subscription for managed cloud hosting, webhook routing, and updates.</p>
+          <p><strong>Full Small Business Website Lease:</strong> Requires a $500.00 one-time build and configuration fee, followed by a $350.00/month recurring subscription for managed hosting, security, and ongoing content updates.</p>
+          <h4 class="text-white font-bold pt-2">3. Remote Hosting & Non-Payment Suspension</h4>
+          <p>All website files, custom code, layouts, and embedded form widgets remain the intellectual property of <strong>NATHANIEL ADS LLC</strong> during the active lease term. Monthly subscriptions renew automatically every 30 days. In the event of a failed or overdue monthly payment beyond a 5-day grace period, NATHANIEL ADS LLC reserves the right to remotely pause or suspend the hosted website or embedded widget until the account balance is brought current.</p>
+          <h4 class="text-white font-bold pt-2">4. Cancellation</h4>
+          <p>Clients may cancel their monthly subscription at any time prior to their next billing date. Upon cancellation, remote hosting and form routing services terminate at the end of the current paid billing cycle. Setup fees are non-refundable once build or sandbox configuration begins.</p>
+        `
+      },
+      lease: {
+        title: "Domain & Digital Asset Lease Agreement",
+        content: `
+          <p>This Domain & Digital Asset Lease Agreement governs the relationship between <strong>NATHANIEL ADS LLC</strong> ("Lessor") and the subscribing business client ("Lessee").</p>
+          <h4 class="text-white font-bold pt-2">1. Client-Registered vs. Company-Registered Domains</h4>
+          <p><strong>Client-Owned Domains:</strong> Where the Lessee registers their own domain name (e.g., via Hostinger) and points DNS Nameservers or A-Records to Lessor's cloud servers, Lessee retains 100% legal ownership of the domain name at all times, while Lessor retains full ownership of the hosted website architecture and widgets.</p>
+          <p><strong>Company Pre-Registered Domains:</strong> Where NATHANIEL ADS LLC pre-registers an exact-match local domain on behalf of Lessee, Lessor retains domain registration control throughout the lease term. Lessee may execute a permanent domain buyout at any time for $199.00 provided the monthly account is in good standing.</p>
+          <h4 class="text-white font-bold pt-2">2. Ongoing Maintenance & Updates</h4>
+          <p>Active lessees receive unlimited reasonable text, image, service-list, and color-scheme updates to their rented website or embedded widget at no additional hourly cost.</p>
+        `
+      }
+    };
+
+    function openLegalModal(docKey) {
+      const doc = legalDocuments[docKey];
+      if (!doc) return;
+      document.getElementById('legalModalTitle').textContent = doc.title;
+      document.getElementById('legalModalBody').innerHTML = doc.content;
+      document.getElementById('legalModal').classList.remove('hidden');
+    }
+
+    function closeLegalModal() {
+      document.getElementById('legalModal').classList.add('hidden');
+    }
+
+    async function handleDemoSubmit(e) {
+      e.preventDefault();
+      const submitBtn = document.getElementById('demoSubmitBtn');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending Parts Inquiry...';
+
+      const form = document.getElementById('demoPartsForm');
+      const formData = new FormData(form);
+      const refId = 'PRT-' + Math.floor(1000 + Math.random() * 9000);
+      const fulfillmentEl = form.querySelector('input[name="fulfillment"]:checked');
+      const fulfillmentVal = fulfillmentEl ? fulfillmentEl.value : 'Request a Call / Quote';
+      const photoFile = document.getElementById('demoPhoto').files[0];
+
+      formData.append('event', 'AUTO_PARTS_INQUIRY');
+      formData.append('reference_id', refId);
+      formData.append('timestamp', new Date().toISOString());
+
+      const payloadSummary = {
+        event: "AUTO_PARTS_INQUIRY",
+        reference_id: refId,
+        fulfillment: fulfillmentVal,
+        photo_attached: photoFile ? photoFile.name : "None",
+        vehicle: {
+          year: document.getElementById('demoYear').value,
+          make: document.getElementById('demoMake').value,
+          model: document.getElementById('demoModel').value,
+          trim: document.getElementById('demoTrim').value || "Not specified",
+          vin: document.getElementById('demoVin').value || "Not provided"
+        },
+        part: {
+          category: document.getElementById('demoCategory').value,
+          part_number: document.getElementById('demoPartNum').value || "Not provided",
+          description: document.getElementById('demoDesc').value
+        },
+        customer: {
+          name: document.getElementById('demoName').value,
+          phone: document.getElementById('demoPhone').value,
+          email: document.getElementById('demoEmail').value || "Not provided"
         }
+      };
 
-        function prevStep(step) {
-            if (step === 1) {
-                document.getElementById('step-2').classList.add('hidden');
-                document.getElementById('step-1').classList.remove('hidden');
-                document.getElementById('progress-bar').style.width = '33%';
-                document.getElementById('step-label-2').classList.remove('text-amber-400');
-                document.getElementById('step-label-1').classList.add('text-amber-400');
-            } else if (step === 2) {
-                document.getElementById('step-3').classList.add('hidden');
-                document.getElementById('step-2').classList.remove('hidden');
-                document.getElementById('progress-bar').style.width = '66%';
-                document.getElementById('step-label-3').classList.remove('text-amber-400');
-                document.getElementById('step-label-2').classList.add('text-amber-400');
-            }
+      try {
+        if (MAKE_WEBHOOK_URL && MAKE_WEBHOOK_URL !== 'YOUR_MAKE_WEBHOOK_URL_HERE') {
+          await fetch(MAKE_WEBHOOK_URL, { method: 'POST', body: formData });
         }
+      } catch (err) {
+        console.error('Webhook transmission error:', err);
+      }
 
-        document.getElementById('partsForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const submitBtn = document.getElementById('submitBtn');
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Sending Request...';
+      document.getElementById('demoJsonOutput').textContent = JSON.stringify(payloadSummary, null, 2);
+      document.getElementById('demoWebhookResponse').classList.remove('hidden');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit Parts Inquiry';
+    }
 
-            const randomId = '#PRT-' + Math.floor(1000 + Math.random() * 9000);
-            document.getElementById('refId').textContent = randomId;
+    async function handleClaimSubmit(e) {
+      e.preventDefault();
+      const submitBtn = document.getElementById('claimSubmitBtn');
+      const confirmBox = document.getElementById('claimConfirmation');
+      const form = document.getElementById('claimForm');
+      const formData = new FormData(form);
+      formData.append('event', 'WEBSITE_RENTER_LEAD');
+      formData.append('timestamp', new Date().toISOString());
 
-            const formData = new FormData(this);
-            formData.append('reference_id', randomId);
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting...';
 
-            try {
-                if (MAKE_WEBHOOK_URL && MAKE_WEBHOOK_URL !== 'https://hook.us2.make.com/im43dwlniz8jpwva3yb8rr43yqmnk44y') {
-                    await fetch(MAKE_WEBHOOK_URL, {
-                        method: 'POST',
-                        body: formData
-                    });
-                }
-            } catch (err) {
-                console.error('Webhook submission error:', err);
-            }
-
-            document.getElementById('form-container').classList.add('hidden');
-            document.getElementById('success-state').classList.remove('hidden');
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Submit Parts Request →';
-        });
-
-        function resetForm() {
-            document.getElementById('partsForm').reset();
-            document.getElementById('success-state').classList.add('hidden');
-            document.getElementById('form-container').classList.remove('hidden');
-            document.getElementById('step-3').classList.add('hidden');
-            document.getElementById('step-1').classList.remove('hidden');
-            document.getElementById('progress-bar').style.width = '33%';
-            document.getElementById('step-label-3').classList.remove('text-amber-400');
-            document.getElementById('step-label-1').classList.add('text-amber-400');
+      try {
+        if (MAKE_WEBHOOK_URL && MAKE_WEBHOOK_URL !== 'YOUR_MAKE_WEBHOOK_URL_HERE') {
+          await fetch(MAKE_WEBHOOK_URL, { method: 'POST', body: formData });
         }
-    </script>
+      } catch (err) {
+        console.error('Claim webhook error:', err);
+      }
+
+      confirmBox.classList.remove('hidden');
+      form.reset();
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit Request';
+      setTimeout(() => { closeModal(); }, 2200);
+    }
+  </script>
 </body>
 </html>
